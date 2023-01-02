@@ -72,6 +72,8 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
                 //     const pp = material[variation.preview] || '#ff00ff'
                 //     image = pp.image || pp
                 // }
+
+
                 // callback to change the material variations
                 const onClick = () => {
                     document.querySelectorAll('.configurator-button').forEach((el) => {
@@ -88,26 +90,24 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
                     image,
                     onClick
                 })
+                // variations
                 const button = document.createElement('li')
                 button.classList.add('configurator-button')
                 button.id = material.name
-                // button.innerHTML = '<img src="' + image + '"/>' + material.name;
                 button.innerHTML = `
-<div id="tooltipOne" class="tooltip">
-${material.name}
-</div>
-<img alt="${material.name}" width="40" height="40" src="assets/images/${material.name}.png">
-                `;
+                    <div id="tooltipOne" class="tooltip">
+                    ${material.name}
+                    </div>
+                    <img alt="${material.name}" width="40" height="40" src="assets/images/${material.name}.png">`;
                 button.style.position = 'relative'
                 button.onclick = onClick;
                 container.append(button)
-
             })
-
-            // todo: add close button
-            // const closeButton = document.createElement('div')
-            // closeButton.classList.add('close-button')
-            // closeButton.innerHTML = 'svg'
+            const closeButton = document.createElement('li')
+            closeButton.id = variation.uuid + "1"
+            closeButton.style.position = "relative"
+            closeButton.innerHTML = `<svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM15 9l-6 6M9 9l6 6" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+            container.append(closeButton)
         }
         return true
     }
@@ -115,29 +115,19 @@ ${material.name}
 
 
 async function setupViewer() {
-    const camView1 = document.querySelector('.one')
-    const loaderElement = document.querySelector('.loader')
-    const camView2 = document.querySelector('.two')
-    const camView3 = document.querySelector('.three')
     const canvasView = document.getElementById('webgi-canvas')
     const canvasContainer = document.getElementById('webgi-canvas-container')
     const buttonExit = document.querySelector('.button-exit')
     const isMobile = mobileAndTabletCheck()
     const CustomizerInterface = document.querySelector('.footer-container')
-    const CustomizerRing = document.querySelector(".footer-ring-colors")
-    const CustomizerGem = document.querySelector(".footer-diamond-colors")
-    const yellow = document.querySelector('.white')
-    const saphire = document.querySelector('.saphire')
-    const red = document.querySelector('.red')
     // let nightModeButton = document.querySelector(".dark-mode")
     let musicButton = document.querySelector(".music-control")
     let diamondColors = document.querySelector(".footer-diamond-colors")
     let ringColors = document.querySelector(".footer-ring-colors")
     let bodyDocument = document.getElementById('body')
     let htmlDocument = document.getElementById('html')
-    let nightMode = false
+    // let nightMode = false
     let firstLooad = true
-    let ringModel = 1
 
     // Initialize the viewer
     const viewer = new ViewerApp({
@@ -216,10 +206,7 @@ async function setupViewer() {
     await timeout(350)
     let diamondColorsContainer = document.querySelector(".footer-container-diamond-color")
     let ringColorsContainer = document.querySelector(".footer-container-ring-colors")
-    const CustomizerInterfaceSecond = document.querySelector('.footer-container-diamond-color')
-    const CustomizerInterfaceSeconds = document.querySelector('.footer-container-ring-colors')
-    let closeMaterials = document.querySelector('.close-materials')
-    let closeGems = document.querySelector('.close-gems')
+    const diamondColorsContainers = document.querySelector('.footer-container-ring-colors')
 
     // ---------------- ------------------------ SETUP SCROLL ANIMATION ---------------- ------------------------ //
 
@@ -458,8 +445,8 @@ async function setupViewer() {
             canvasView.style.pointerEvents = "all"
             canvasContainer.style.pointerEvents = "all"
             musicButton.style.pointerEvents = "none"
-            CustomizerGem.style.pointerEvents = "all"
-            CustomizerRing.style.pointerEvents = "all"
+            diamondColors.style.pointerEvents = "all"
+            ringColors.style.pointerEvents = "all"
             // nightModeButton.style.pointerEvents = "none"
         }
 
@@ -502,8 +489,8 @@ async function setupViewer() {
             buttonExit.classList.remove("visible")
             CustomizerInterface.classList.remove("visible")
             CustomizerInterface.classList.add("hidden")
-            CustomizerInterfaceSecond.classList.remove("visible")
-            CustomizerInterfaceSeconds.classList.remove("visible")
+            diamondColorsContainer.classList.remove("visible")
+            diamondColorsContainers.classList.remove("visible")
             // nightModeButton.style.opacity = "1"
             musicButton.style.opacity = "1"
             disablePointerEvents()
@@ -514,8 +501,8 @@ async function setupViewer() {
         })
 
         function disablePointerEvents() {
-            CustomizerGem.style.pointerEvents = "none"
-            CustomizerRing.style.pointerEvents = "none"
+            diamondColors.style.pointerEvents = "none"
+            ringColors.style.pointerEvents = "none"
             buttonExit.style.pointerEvents = "none"
             canvasContainer.style.pointerEvents = "none"
             musicButton.style.pointerEvents = "all"
@@ -583,21 +570,22 @@ async function setupViewer() {
         function hideRingColorsContainer() {
             ringColorsContainer.style.opacity = "0"
             ringColorsContainer.style.visibility = "hidden"
+            ringColorsContainer.style.pointerEvents = "none"
 
         }
 
         function hideDiamondColorsContainer() {
             diamondColorsContainer.style.opacity = "0"
             diamondColorsContainer.style.visibility = "hidden"
+            diamondColorsContainer.style.pointerEvents = "none"
         }
 
 
         ringColors.addEventListener('click', () => {
             hideDiamondColorsContainer()
-            ringColorsContainer.style.visibility = "visible"
-            closeMaterials.style.pointerEvents = "all"
-            CustomizerInterfaceSeconds.style.pointerEvents = "all"
-            ringColorsContainer.style.opacity = "1"
+            diamondColorsContainers.style.visibility = "visible"
+            diamondColorsContainers.style.pointerEvents = "all"
+            diamondColorsContainers.style.opacity = "1"
             gsap.to(position, {
                 x: -2.25,
                 y: -0.18,
@@ -612,9 +600,8 @@ async function setupViewer() {
         diamondColors.addEventListener('click', () => {
             hideRingColorsContainer()
             diamondColorsContainer.style.visibility = "visible"
-            CustomizerInterfaceSecond.style.pointerEvents = "all"
+            diamondColorsContainer.style.pointerEvents = "all"
             diamondColorsContainer.style.opacity = "1"
-            closeGems.style.pointerEvents = "all"
             gsap.to(position, {
                 x: 1.70,
                 y: 0.25,
@@ -627,31 +614,33 @@ async function setupViewer() {
             gsap.to(target, {x: 0.01, y: 0.5, z: 1.19, onUpdate, duration: 1, ease: "power3.inOut"})
         })
 
-
-        closeGems.addEventListener('click', () => {
+        // close gems and ring
+        const closeButtonMetal = document.getElementById('Metal1')
+        closeButtonMetal.addEventListener('click', () => { 
             closegems()
-            closeGems.style.pointerEvents = "none"
-
+            closeMaterialTab()
+            isAutoRotateTrue()
+        })
+        const closeButtonGem = document.getElementById('Gem1')
+        closeButtonGem.addEventListener('click', () => { 
+            closegems()
+            closeMaterialTab()
+            isAutoRotateTrue()
         })
 
         function closegems() {
             diamondColorsContainer.style.opacity = 0
             diamondColorsContainer.style.visibility = "hidden"
-            CustomizerInterfaceSecond.style.pointerEvents = "none"
-            isAutoRotateTrue()
+            diamondColorsContainer.style.pointerEvents = "none"
         }
-
-        closeMaterials.addEventListener('click', () => {
-            closeMaterialTab()
-            closeMaterials.style.pointerEvents = "none"
-            CustomizerInterfaceSeconds.style.pointerEvents = "none"
-        })
 
         function closeMaterialTab() {
             ringColorsContainer.style.opacity = 0
             ringColorsContainer.style.visibility = "hidden"
-            isAutoRotateTrue()
+            ringColorsContainer.pointerEvents = "none"
         }
+
+
 
 
     }
@@ -659,7 +648,6 @@ async function setupViewer() {
 
 }
 
-// HOVER EFFECTS ON GEMS AND RING MATERIALS
 
 
 // BACKGROUND MUSIC

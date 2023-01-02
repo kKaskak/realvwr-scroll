@@ -37,17 +37,15 @@ html, body {
   overflow-x: hidden !important;
   overflow-y: hidden;
 }
-/*#configurator {*/
-/*  transform: translateX(-100%);*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  width: 300px;*/
-/*  height: 300px;*/
-/*  display: flex;*/
-/*  z-index: 15;*/
-/*  border: 3px solid var(--background-dark-purple);*/
-/*}*/
+#configurator {
+ z-index: 15;
+ position: absolute;
+ width: 100vw;
+ bottom: -10px;
+display: flex;
+justify-content: center;
+}
+
 #webgi-canvas {
   width: 100%;
 	height: 100vh;
@@ -486,6 +484,12 @@ html, body {
   align-items: center;
 }
 .footer-container-diamond-color > li > img {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
   transition: 0.5s;
 }
 .footer-container-diamond-color > li > img:hover {
@@ -499,34 +503,32 @@ html, body {
   background: rgba(255, 255, 255, 0.8784313725);
   border-radius: 50px;
   padding: 20px 30px;
-  pointer-events: none;
-  align-items: center;
   opacity: 0;
   visibility: hidden;
   display: flex;
   transition: all 0.4s ease-in-out;
-  width: auto;
   z-index: 10;
   list-style: none;
   overflow-x: scroll;
   overflow-y: hidden !important;
 }
 .footer-container-ring-colors > li {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  align-items: center;
-  gap: 3em;
-  margin: 0;
-  padding: 0;
+  padding: 0 1rem 0 1rem;
   pointer-events: all;
   cursor: pointer;
-  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 .footer-container-ring-colors > li > img {
   transition: 0.5s;
-  padding: 0 1rem 0 1rem;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
 }
 .footer-container-ring-colors > li > img:hover {
   transform: scale(1.2);
@@ -598,12 +600,21 @@ html, body {
   position: absolute;
   pointer-events: none;
   z-index: 15;
-  font-size: 10px;
+  font-size: 9px;
   color: #52322B;
   transition: 0.4s;
+  text-transform: uppercase;
+  text-align: center;
+  width: 110px;
+  letter-spacing: 1px;
   top: -1rem;
-  left: 0;
   opacity: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
 }
 .active .tooltip{
     opacity: 1 !important;
