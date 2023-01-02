@@ -37,17 +37,17 @@ html, body {
   overflow-x: hidden !important;
   overflow-y: hidden;
 }
-#configurator {
-  transform: translateX(-100%);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  z-index: 15;
-  border: 3px solid var(--background-dark-purple);
-}
+/*#configurator {*/
+/*  transform: translateX(-100%);*/
+/*  position: fixed;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 300px;*/
+/*  height: 300px;*/
+/*  display: flex;*/
+/*  z-index: 15;*/
+/*  border: 3px solid var(--background-dark-purple);*/
+/*}*/
 #webgi-canvas {
   width: 100%;
 	height: 100vh;
@@ -414,7 +414,7 @@ html, body {
 }
 .button-exit {
   pointer-events: none;
-  width: 110px !important; 
+  width: 110px !important;
   top: 0;
   right: 0;
   margin-right: 5%;
@@ -595,12 +595,18 @@ html, body {
   visibility: hidden;
 }
 .tooltip {
-  opacity: 0;
+  position: absolute;
   pointer-events: none;
   z-index: 15;
   font-size: 10px;
   color: #52322B;
   transition: 0.4s;
+  top: -1rem;
+  left: 0;
+  opacity: 0;
+}
+.active .tooltip{
+    opacity: 1 !important;
 }
 .close-materials {
   pointer-events: none;
@@ -623,7 +629,7 @@ html, body {
   }
   .button-exit {
     width: 95px !important;
-    height: 40px !important; 
+    height: 40px !important;
     margin-top: 60px;
   }
   .footer-container-diamond-color {
@@ -650,7 +656,7 @@ html, body {
   .button-exit {
     margin-top: 50px;
   }
- 
+
 }
 @media (max-width: 570px) {
   .header {
@@ -714,7 +720,7 @@ html, body {
   font-size: 0.8125rem;
   line-height: 180%;
 }
-  
+
 }
 @media (max-width: 500px) {
   .header-brand > img {
