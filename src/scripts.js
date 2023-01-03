@@ -31,8 +31,10 @@ import {
     DiamondMaterial,
     Material,
     MaterialManager,
+    NormalBufferPlugin,
     MaterialConfiguratorPlugin,
     MeshNormalMaterial,
+    SSBevelPlugin,
 } from "webgi";
 
 import gsap from "gsap"
@@ -144,8 +146,10 @@ async function setupViewer() {
     // Add all the plugins at once
     await addBasePlugins(viewer);
 
+
     // await viewer.addPlugin(MaterialConfiguratorPlugin)
     await viewer.addPlugin(CustomMaterialConfiguratorPlugin)
+
 
 
     // This must be called after adding any plugin that changes the render pipeline.
@@ -156,7 +160,11 @@ async function setupViewer() {
     // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
 
 
-    await manager.addFromPath("./assets/final_with_materials.glb")
+    await manager.addFromPath("./assets/final_blue_updated.glb")
+
+    await viewer.addPlugin(NormalBufferPlugin, true)
+
+    await viewer.addPlugin(SSBevelPlugin, true)
 
     // viewer.getPlugin(TonemapPlugin)!.config!.clipBackground = true if we need clipped background
 
@@ -245,7 +253,7 @@ async function setupViewer() {
                 z: isMobile ? -0.1 : -0.1
             },
             {
-                x: isMobile ? 1.4 : 0.91,
+                x: isMobile ? 0.7 : 0.91,
                 y: isMobile ? 0 : 0.03,
                 z: isMobile ? 1 : 1,
                 duration: 4, onUpdate,

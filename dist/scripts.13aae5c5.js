@@ -81423,8 +81423,14 @@ function _setupViewer() {
 
           // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
           _context3.next = 26;
-          return manager.addFromPath("./assets/final_with_materials.glb");
+          return manager.addFromPath("./assets/final_blue_updated.glb");
         case 26:
+          _context3.next = 28;
+          return viewer.addPlugin(_webgi.NormalBufferPlugin, true);
+        case 28:
+          _context3.next = 30;
+          return viewer.addPlugin(_webgi.SSBevelPlugin, true);
+        case 30:
           // viewer.getPlugin(TonemapPlugin)!.config!.clipBackground = true if we need clipped background
 
           viewer.scene.activeCamera.setCameraOptions({
@@ -81457,9 +81463,9 @@ function _setupViewer() {
             }
           });
           viewer.renderer.refreshPipeline();
-          _context3.next = 36;
+          _context3.next = 40;
           return (0, _webgi.timeout)(350);
-        case 36:
+        case 40:
           diamondColorsContainer = document.querySelector(".footer-container-diamond-color");
           ringColorsContainer = document.querySelector(".footer-container-ring-colors");
           diamondColorsContainers = document.querySelector('.footer-container-ring-colors'); // ---------------- ------------------------ SETUP SCROLL ANIMATION ---------------- ------------------------ //
@@ -81491,7 +81497,7 @@ function _setupViewer() {
               y: isMobile ? -0.07 : -0.07,
               z: isMobile ? -0.1 : -0.1
             }, {
-              x: isMobile ? 1.4 : 0.91,
+              x: isMobile ? 0.7 : 0.91,
               y: isMobile ? 0 : 0.03,
               z: isMobile ? 1 : 1,
               duration: 4,
@@ -81883,7 +81889,7 @@ function _setupViewer() {
             }
           };
           setupScrollAnimation();
-        case 41:
+        case 45:
         case "end":
           return _context3.stop();
       }
@@ -81935,7 +81941,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58665" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59123" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

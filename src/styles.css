@@ -690,7 +690,7 @@ justify-content: center;
     max-width: var(---width-sm);
   }
   .header-brand > img {
-    width: 70%;
+    width: 60%;
   }
   .button-exit {
     margin-top: 45px;
@@ -735,7 +735,7 @@ justify-content: center;
 }
 @media (max-width: 500px) {
   .header-brand > img {
-    width: 85%;
+    width: 75%;
   }
 }
 
@@ -764,7 +764,7 @@ justify-content: center;
     width: 70%;
   }
   .header-brand > img {
-    width: 100%;
+    width: 80%;
   }
   .button-exit {
     margin-top: 30px;
