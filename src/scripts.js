@@ -28,7 +28,6 @@ import {
     Mesh,
     html,
     diamondMaterialPropList,
-    DiamondMaterial,
     Material,
     MaterialManager,
     NormalBufferPlugin,
@@ -123,7 +122,7 @@ async function setupViewer() {
     const isMobile = mobileAndTabletCheck()
     const CustomizerInterface = document.querySelector('.footer-container')
     // let nightModeButton = document.querySelector(".dark-mode")
-    let musicButton = document.querySelector(".music-control")
+    // let musicButton = document.querySelector(".music-control")
     let diamondColors = document.querySelector(".footer-diamond-colors")
     let ringColors = document.querySelector(".footer-ring-colors")
     let bodyDocument = document.getElementById('body')
@@ -443,7 +442,7 @@ async function setupViewer() {
             canvasContainer.style.zIndex = "1"
             document.body.style.cursor = "grab"
             // nightModeButton.style.opacity = "0"
-            musicButton.style.opacity = "0"
+            // musicButton.style.opacity = "0"
             EnablePointerEvents()
             EnableCustomizer()
         })
@@ -452,7 +451,7 @@ async function setupViewer() {
             buttonExit.style.pointerEvents = "all"
             canvasView.style.pointerEvents = "all"
             canvasContainer.style.pointerEvents = "all"
-            musicButton.style.pointerEvents = "none"
+            // musicButton.style.pointerEvents = "none"
             diamondColors.style.pointerEvents = "all"
             ringColors.style.pointerEvents = "all"
             // nightModeButton.style.pointerEvents = "none"
@@ -500,7 +499,7 @@ async function setupViewer() {
             diamondColorsContainer.classList.remove("visible")
             diamondColorsContainers.classList.remove("visible")
             // nightModeButton.style.opacity = "1"
-            musicButton.style.opacity = "1"
+            // musicButton.style.opacity = "1"
             disablePointerEvents()
             buttonExitFunc()
             setTimeout(() => {
@@ -513,7 +512,7 @@ async function setupViewer() {
             ringColors.style.pointerEvents = "none"
             buttonExit.style.pointerEvents = "none"
             canvasContainer.style.pointerEvents = "none"
-            musicButton.style.pointerEvents = "all"
+            // musicButton.style.pointerEvents = "all"
             // nightModeButton.style.pointerEvents = "all"
         }
 
@@ -661,26 +660,26 @@ async function setupViewer() {
 // BACKGROUND MUSIC
 
 
-let firstPlay = true
-let audio = new Audio();
-audio.src = './assets/sounds/music_loop.mp3'
-let musicPlay = false
+// let firstPlay = true
+// let audio = new Audio();
+// audio.src = './assets/sounds/music_loop.mp3'
+// let musicPlay = false
 
-function playMusic() {
-    if (!musicPlay) {
-        audio.play()
-        audio.volume = 0.1
-        audio.loop = true
-        musicPlay = true
-    } else {
-        audio.pause()
-        musicPlay = false
-    }
-}
+// function playMusic() {
+//     if (!musicPlay) {
+//         audio.play()
+//         audio.volume = 0.1
+//         audio.loop = true
+//         musicPlay = true
+//     } else {
+//         audio.pause()
+//         musicPlay = false
+//     }
+// }
 
-document.querySelector('.music-control')?.addEventListener('click', () => {
-    playMusic()
-})
+// document.querySelector('.music-control')?.addEventListener('click', () => {
+//     playMusic()
+// })
 
 
 setupViewer();
