@@ -147,23 +147,33 @@ async function setupViewer() {
 
 
     // await viewer.addPlugin(MaterialConfiguratorPlugin)
+
     await viewer.addPlugin(CustomMaterialConfiguratorPlugin)
 
 
 
+
+
+    await viewer.addPlugin(NormalBufferPlugin, true)
+
+    viewer.confirm = (NormalBufferPlugin)=>true 
+    window.confirm = (NormalBufferPlugin)=>true
+
+    await viewer.addPlugin(SSBevelPlugin, true)
+
     // This must be called after adding any plugin that changes the render pipeline.
 
-
     viewer.renderer.refreshPipeline();
+
+
+
 
     // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
 
 
     await manager.addFromPath("./assets/final_blue_updated.glb")
 
-    await viewer.addPlugin(NormalBufferPlugin, true)
 
-    await viewer.addPlugin(SSBevelPlugin, true)
 
     // viewer.getPlugin(TonemapPlugin)!.config!.clipBackground = true if we need clipped background
 

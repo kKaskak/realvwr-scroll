@@ -81434,20 +81434,26 @@ function _setupViewer() {
           _context3.next = 22;
           return viewer.addPlugin(CustomMaterialConfiguratorPlugin);
         case 22:
+          _context3.next = 24;
+          return viewer.addPlugin(_webgi.NormalBufferPlugin, true);
+        case 24:
+          viewer.confirm = function (NormalBufferPlugin) {
+            return true;
+          };
+          window.confirm = function (NormalBufferPlugin) {
+            return true;
+          };
+          _context3.next = 28;
+          return viewer.addPlugin(_webgi.SSBevelPlugin, true);
+        case 28:
           // This must be called after adding any plugin that changes the render pipeline.
 
           viewer.renderer.refreshPipeline();
 
           // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
-          _context3.next = 25;
+          _context3.next = 31;
           return manager.addFromPath("./assets/final_blue_updated.glb");
-        case 25:
-          _context3.next = 27;
-          return viewer.addPlugin(_webgi.NormalBufferPlugin, true);
-        case 27:
-          _context3.next = 29;
-          return viewer.addPlugin(_webgi.SSBevelPlugin, true);
-        case 29:
+        case 31:
           // viewer.getPlugin(TonemapPlugin)!.config!.clipBackground = true if we need clipped background
 
           viewer.scene.activeCamera.setCameraOptions({
@@ -81480,9 +81486,9 @@ function _setupViewer() {
             }
           });
           viewer.renderer.refreshPipeline();
-          _context3.next = 39;
+          _context3.next = 41;
           return (0, _webgi.timeout)(350);
-        case 39:
+        case 41:
           diamondColorsContainer = document.querySelector(".footer-container-diamond-color");
           ringColorsContainer = document.querySelector(".footer-container-ring-colors");
           diamondColorsContainers = document.querySelector('.footer-container-ring-colors'); // ---------------- ------------------------ SETUP SCROLL ANIMATION ---------------- ------------------------ //
@@ -81906,7 +81912,7 @@ function _setupViewer() {
             }
           };
           setupScrollAnimation();
-        case 44:
+        case 46:
         case "end":
           return _context3.stop();
       }
@@ -81940,7 +81946,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59888" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61486" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
