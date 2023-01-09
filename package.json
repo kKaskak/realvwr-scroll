@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --output public/",
+    "build": "parcel build index.html --no-minify --public-url ./https://1st-jewerly-website-timothy.vercel.app/",
     "deploy": "vercel --prod"
   },
   "devDependencies": {
