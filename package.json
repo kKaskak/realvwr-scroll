@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": " [index.html] build --output public"
+    "build": "parcel build index.html --no-minify --public-url ./",
+    "deploy": "vercel --prod"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.14",
@@ -15,6 +16,7 @@
     "parcel-plugin-static-files-copy": "^2.6.0",
     "typescript": "4.4.4",
     "gsap": "^3.11.4",
+    "vercel": "^27.2.0",
     "webgi": "https://storage.googleapis.com/dist.pixotronics.com/webgi/runtime/bundle-0.6.3.tgz"
   },
   "resolutions": {
