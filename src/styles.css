@@ -18,6 +18,31 @@
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
 }
+* {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+input,
+textarea,
+button,
+select,
+svg,
+img,
+li,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+p {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
 
 .st0{fill:#322F42;}
 
@@ -404,6 +429,12 @@ justify-content: center;
   padding: 0 10px;
   cursor: pointer;
   transition: all 0.8s ease-in-out;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
 }
 .btn-customize:hover {
   box-shadow: inset 0 0 60px #c04040;
@@ -609,6 +640,14 @@ justify-content: center;
   letter-spacing: 1px;
   top: -1rem;
   opacity: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; 
+}
+.configurator-button {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
    -khtml-user-select: none; /* Konqueror HTML */

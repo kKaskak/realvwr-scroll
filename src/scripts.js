@@ -183,7 +183,6 @@ async function setupViewer() {
 
     // --------------------------------- ON UPDATE
 
-
     let needsUpdate = true;
 
     function onUpdate() {
@@ -494,6 +493,7 @@ async function setupViewer() {
             const options = viewer.scene.activeCamera.getCameraOptions();
             viewer.scene.activeCamera.setCameraOptions(options);
             const controls = viewer.scene.activeCamera.controls;
+            controls.enablePan = false
             controls.autoRotate = true;
             controls.minDistance = 3;
             controls.maxDistance = 15;
@@ -605,33 +605,58 @@ async function setupViewer() {
             diamondColorsContainers.style.visibility = "visible"
             diamondColorsContainers.style.pointerEvents = "all"
             diamondColorsContainers.style.opacity = "1"
-            gsap.to(position, {
-                x: -2.25,
-                y: -0.18,
-                z: 4.56,
-                onUpdate,
-                duration: 1,
-                ease: "power3.inOut",
-                onComplete: isAutoRotateFalse
-            })
-            gsap.to(target, {x: 0.21, y: 0.28, z: -0.02, onUpdate, duration: 1, ease: "power3.inOut"})
+            movetoRing()
         })
+
+    function movetoRing () {
+        gsap.to(position, {
+            x: isMobile ? -2.25 : -2.25,
+            y: isMobile ? -0.18 : -0.18,
+            z: isMobile ? 4.56: 4.56,
+            onUpdate,
+            duration: 1.5,
+            ease: "power3.inOut",
+            onComplete: isAutoRotateFalse
+        })
+        gsap.to(target, {
+        x: isMobile ? 0.2: 0.2,
+        y: isMobile ? 0.28: 0.28,
+        z: isMobile ? -0.02: -0.02,
+        onUpdate,
+        duration: 1.5,
+        ease: "power3.inOut"
+        })
+    }
         diamondColors.addEventListener('click', () => {
             hideRingColorsContainer()
             diamondColorsContainer.style.visibility = "visible"
             diamondColorsContainer.style.pointerEvents = "all"
             diamondColorsContainer.style.opacity = "1"
+           movetoDiamonds()
+        })
+
+        function movetoDiamonds () { 
             gsap.to(position, {
                 x: 1.70,
                 y: 0.25,
                 z: 5.2,
+                x: isMobile ? 1.7: 1.7,
+                y: isMobile ? 0.25: 0.25,
+                z: isMobile ? 5.2: 5.2,
                 onUpdate,
-                duration: 1,
+                duration: 1.5,
                 ease: "power3.inOut",
                 onComplete: isAutoRotateFalse
             })
-            gsap.to(target, {x: 0.01, y: 0.5, z: 1.19, onUpdate, duration: 1, ease: "power3.inOut"})
-        })
+            gsap.to(target, {
+                x: isMobile ? 0.01: 0.01,
+                y: isMobile ? 0.5: 0.5,
+                z: isMobile ? 1.19: 1.19,
+                onUpdate,
+                duration: 1.5,
+                ease: "power3.inOut"
+            })
+         }
 
         // close gems and ring
         const closeButtonMetal = document.getElementById('Metal1')
