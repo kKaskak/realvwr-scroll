@@ -1,5 +1,0 @@
-{
-    "buildCommand": "npm run build --prod",
-    "outputDirectory": "public"
-
-}
