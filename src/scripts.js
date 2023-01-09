@@ -157,7 +157,9 @@ async function setupViewer() {
     await viewer.addPlugin(NormalBufferPlugin, true)
 
     viewer.confirm = (NormalBufferPlugin)=>true 
-    window.confirm = (NormalBufferPlugin)=>true
+    window.confirm 
+    
+    = (NormalBufferPlugin)=>true
 
     await viewer.addPlugin(SSBevelPlugin, true)
 
