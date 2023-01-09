@@ -1,0 +1,5 @@
+{
+    "buildCommand": "npm build",
+    "outputDirectory": "build"
+
+}
