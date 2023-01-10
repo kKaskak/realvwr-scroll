@@ -289,7 +289,9 @@ async function setupViewer() {
 
 
         tl.to(position, {
-            x: -0.88, y: -4.65, z: 2.73,
+            x: isMobile ? -0.40 : -0.88,
+            y: isMobile ? -4.65 : -4.65,
+            z: isMobile ? 2.73 : 2.73,
             scrollTrigger: {
                 trigger: ".section-2-container",
                 scrub: true,
@@ -299,7 +301,9 @@ async function setupViewer() {
             }, onUpdate
         })
             .to(target, {
-                x: -0.87, y: 0.22, z: 1.19,
+                x: isMobile ? -0.40 : -0.87,
+                y: isMobile ? 0.31 : 0.22,
+                z: isMobile ? 0.91 : 1.19,
                 scrollTrigger: {
                     trigger: ".section-2-container",
                     scrub: true,
@@ -586,6 +590,31 @@ async function setupViewer() {
         // ---------------------- CUSTOMIZE THE RING COLORS / PROPERTIES
 
 
+
+        ringColors.addEventListener('click', () => {
+            hideDiamondColorsContainer()
+            isAutoRotateFalse()
+            diamondColorsContainers.style.visibility = "visible"
+            diamondColorsContainers.style.pointerEvents = "all"
+            diamondColorsContainers.style.opacity = "1"
+            setTimeout(() => {
+                movetoRing()
+            }, 500);
+        })
+
+        diamondColors.addEventListener('click', () => {
+            hideRingColorsContainer()
+            isAutoRotateFalse()
+            diamondColorsContainer.style.visibility = "visible"
+            diamondColorsContainer.style.pointerEvents = "all"
+            diamondColorsContainer.style.opacity = "1"
+            setTimeout(() => {
+                movetoDiamonds()
+            }, 500);
+        })
+
+
+
         function hideRingColorsContainer() {
             ringColorsContainer.style.opacity = "0"
             ringColorsContainer.style.visibility = "hidden"
@@ -600,77 +629,7 @@ async function setupViewer() {
         }
 
 
-        ringColors.addEventListener('click', () => {
-            hideDiamondColorsContainer()
-            diamondColorsContainers.style.visibility = "visible"
-            diamondColorsContainers.style.pointerEvents = "all"
-            diamondColorsContainers.style.opacity = "1"
-            movetoRing()
-        })
 
-    function movetoRing () {
-        gsap.to(position, {
-            x: isMobile ? -2.25 : -2.25,
-            y: isMobile ? -0.18 : -0.18,
-            z: isMobile ? 4.56: 4.56,
-            onUpdate,
-            duration: 1.5,
-            ease: "power3.inOut",
-            onComplete: isAutoRotateFalse
-        })
-        gsap.to(target, {
-        x: isMobile ? 0.2: 0.2,
-        y: isMobile ? 0.28: 0.28,
-        z: isMobile ? -0.02: -0.02,
-        onUpdate,
-        duration: 1.5,
-        ease: "power3.inOut"
-        })
-    }
-        diamondColors.addEventListener('click', () => {
-            hideRingColorsContainer()
-            diamondColorsContainer.style.visibility = "visible"
-            diamondColorsContainer.style.pointerEvents = "all"
-            diamondColorsContainer.style.opacity = "1"
-           movetoDiamonds()
-        })
-
-        function movetoDiamonds () { 
-            gsap.to(position, {
-                x: 1.70,
-                y: 0.25,
-                z: 5.2,
-                x: isMobile ? 1.7: 1.7,
-                y: isMobile ? 0.25: 0.25,
-                z: isMobile ? 5.2: 5.2,
-                onUpdate,
-                duration: 1.5,
-                ease: "power3.inOut",
-                onComplete: isAutoRotateFalse
-            })
-            gsap.to(target, {
-                x: isMobile ? 0.01: 0.01,
-                y: isMobile ? 0.5: 0.5,
-                z: isMobile ? 1.19: 1.19,
-                onUpdate,
-                duration: 1.5,
-                ease: "power3.inOut"
-            })
-         }
-
-        // close gems and ring
-        const closeButtonMetal = document.getElementById('Metal1')
-        closeButtonMetal.addEventListener('click', () => { 
-            closegems()
-            closeMaterialTab()
-            isAutoRotateTrue()
-        })
-        const closeButtonGem = document.getElementById('Gem1')
-        closeButtonGem.addEventListener('click', () => { 
-            closegems()
-            closeMaterialTab()
-            isAutoRotateTrue()
-        })
 
         function closegems() {
             diamondColorsContainer.style.opacity = 0
@@ -684,6 +643,61 @@ async function setupViewer() {
             ringColorsContainer.pointerEvents = "none"
         }
 
+
+    function movetoRing () {
+        gsap.to(position, {
+            x: isMobile ? -4 : -2.25,
+            y: isMobile ? -0.18 : -0.18,
+            z: isMobile ? 7: 4.56,
+            onUpdate,
+            duration: 1.5,
+            ease: "power3.inOut"
+        })
+        gsap.to(target, {
+        x: isMobile ? 0.2: 0.2,
+        y: isMobile ? 0.28: 0.28,
+        z: isMobile ? -0.02: -0.02,
+        onUpdate,
+        duration: 1.5,
+        ease: "power3.inOut"
+        })
+    }
+
+        function movetoDiamonds () { 
+            gsap.to(position, {
+                x: isMobile ? 2.5 : 1.7,
+                y: isMobile ? 0.8 : 0.25,
+                z: isMobile ? 7.4 : 5.2,
+                onUpdate,
+                duration: 1.5,
+                ease: "power3.inOut"
+            })
+            gsap.to(target, {
+                x: isMobile ? -0.08: 0.01,
+                y: isMobile ? 0.22: 0.5,
+                z: isMobile ? 0.8: 1.19,
+                onUpdate,
+                duration: 1.5,
+                ease: "power3.inOut"
+            })
+         }
+         
+
+        // close gems and ring
+
+
+        const closeButtonMetal = document.getElementById('Metal1')
+        closeButtonMetal.addEventListener('click', () => { 
+            closegems()
+            closeMaterialTab()
+            isAutoRotateTrue()
+        })
+        const closeButtonGem = document.getElementById('Gem1')
+        closeButtonGem.addEventListener('click', () => { 
+            closegems()
+            closeMaterialTab()
+            isAutoRotateTrue()
+        })
 
 
 
