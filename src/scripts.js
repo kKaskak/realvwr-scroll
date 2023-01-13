@@ -16,6 +16,7 @@ import {
     TemporalAAPlugin,
     AnisotropyPlugin,
     GammaCorrectionPlugin,
+    CameraViewPlugin,
     MaterialConfiguratorBasePlugin,
     addBasePlugins,
     ITexture, TweakpaneUiPlugin, AssetManagerBasicPopupPlugin, CanvasSnipperPlugin,
@@ -34,6 +35,9 @@ import {
     MaterialConfiguratorPlugin,
     MeshNormalMaterial,
     SSBevelPlugin,
+    CameraView,
+    EasingFunctions,
+    EnvironmentPresetGroup,
 } from "webgi";
 
 import gsap from "gsap"
@@ -163,6 +167,10 @@ async function setupViewer() {
 
     await viewer.addPlugin(SSBevelPlugin, true)
 
+
+
+    const camViews = viewer.getPlugin(CameraViewPlugin)
+
     // This must be called after adding any plugin that changes the render pipeline.
 
     viewer.renderer.refreshPipeline();
@@ -174,6 +182,9 @@ async function setupViewer() {
 
 
     await manager.addFromPath("./assets/final_blue_updated.glb")
+
+    viewer.getPlugin(TonemapPlugin).contrast = 1.06
+
 
 
 
@@ -187,7 +198,6 @@ async function setupViewer() {
 
     function onUpdate() {
         needsUpdate = true
-        viewer.renderer.resetShadows()
     }
 
     // ---------------------------------  WEBGi loader ---------------------------------  //
@@ -431,8 +441,7 @@ async function setupViewer() {
 
         viewer.addEventListener('preFrame', () => {
             if (needsUpdate) {
-                camera.positionUpdated(true)
-                camera.targetUpdated(true)
+                camera.positionTargetUpdated(true)
                 needsUpdate = false
             }
         })
@@ -555,6 +564,8 @@ async function setupViewer() {
         }
 
         function isAutoRotateFalse() {
+            const options = viewer.scene.activeCamera.getCameraOptions();
+            viewer.scene.activeCamera.setCameraOptions(options);
             const controls = viewer.scene.activeCamera.controls;
             controls.autoRotate = false;
         }
@@ -580,8 +591,7 @@ async function setupViewer() {
 
         viewer.addEventListener('preFrame', () => {
             if (needsUpdate) {
-                camera.positionUpdated(true)
-                camera.targetUpdated(true)
+                camera.positionTargetUpdated(true)
                 needsUpdate = false
             }
         })
@@ -644,44 +654,53 @@ async function setupViewer() {
         }
 
 
-    function movetoRing () {
-        gsap.to(position, {
-            x: isMobile ? -4 : -2.25,
-            y: isMobile ? -0.18 : -0.18,
-            z: isMobile ? 7: 4.56,
-            onUpdate,
-            duration: 1.5,
-            ease: "power3.inOut"
-        })
-        gsap.to(target, {
-        x: isMobile ? 0.2: 0.2,
-        y: isMobile ? 0.28: 0.28,
-        z: isMobile ? -0.02: -0.02,
-        onUpdate,
-        duration: 1.5,
-        ease: "power3.inOut"
-        })
+    async function movetoRing () {
+        let moveRing = camViews.getCurrentCameraView(viewer.scene.activeCamera)
+        moveRing.position.set(-2.25,-0.18,4.56)
+        if (isMobile === true) {
+            moveRing.position.set(-5,0.38,8)
+        }
+        moveRing.target.set(0.2,0.28,-0.02)
+        await camViews.animateToView(moveRing, 2000, EasingFunctions.easeInOut)
+        // gsap.to(position, {
+        //     x: isMobile ? -4 : -2.04,
+        //     y: isMobile ? 0.18 : -0.30,
+        //     z: isMobile ? 7: 4.6,
+        //     onUpdate,
+        //     duration: 1,
+        // })
+        // gsap.to(target, {
+        // x: isMobile ? 0.5: 0.2,
+        // y: isMobile ? 0.13: 0.15,
+        // z: isMobile ? 0.01: 0.4,
+        // onUpdate,
+        // duration: 1,
+        // })
     }
-
-        function movetoDiamonds () { 
-            gsap.to(position, {
-                x: isMobile ? 2.5 : 1.7,
-                y: isMobile ? 0.8 : 0.25,
-                z: isMobile ? 7.4 : 5.2,
-                onUpdate,
-                duration: 1.5,
-                ease: "power3.inOut"
-            })
-            gsap.to(target, {
-                x: isMobile ? -0.08: 0.01,
-                y: isMobile ? 0.22: 0.5,
-                z: isMobile ? 0.8: 1.19,
-                onUpdate,
-                duration: 1.5,
-                ease: "power3.inOut"
-            })
-         }
-         
+    async function movetoDiamonds () {
+        let moveDiamonds = camViews.getCurrentCameraView(viewer.scene.activeCamera)
+        moveDiamonds.position.set(1.59,0.65,5.05)
+        if (isMobile === true) {
+            moveDiamonds.position.set(1.8,1.2,8.4)
+        }
+        moveDiamonds.target.set(-0.1,0.02,0.4)
+        await camViews.animateToView(moveDiamonds, 2000, EasingFunctions.easeInOut)
+        //     gsap.to(position, {
+        //         x: isMobile ? 2.5 : 1.59,
+        //         y: isMobile ? 0.8 : 0.57,
+        //         z: isMobile ? 7.4 : 5.2,
+        //         onUpdate,
+        //         duration: 1,
+        //     })
+        //     gsap.to(target, {
+        //         x: isMobile ? -0.08: 0.03,
+        //         y: isMobile ? 0.22: 0.01,
+        //         z: isMobile ? 0.8: 0.43,
+        //         onUpdate,
+        //         duration: 1,
+        //     })
+    }
+    
 
         // close gems and ring
 
