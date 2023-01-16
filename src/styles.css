@@ -156,9 +156,10 @@ justify-content: center;
   user-select: none;
   z-index: 12;
 }
-.header-brand > img {
+.header-brand > a > img {
   width: 50%;
 }
+
 .header-menu {
   margin: auto 0 !important;
   list-style: none;

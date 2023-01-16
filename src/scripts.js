@@ -181,7 +181,7 @@ async function setupViewer() {
     // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
 
 
-    await manager.addFromPath("./assets/final_blue_updated.glb")
+    await manager.addFromPath("./assets/final_1.glb")
 
     viewer.getPlugin(TonemapPlugin).contrast = 1.06
 
