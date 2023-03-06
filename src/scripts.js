@@ -181,14 +181,14 @@ async function setupViewer() {
     // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
 
 
-    await manager.addFromPath("./assets/final_1.glb")
+    await manager.addFromPath("./assets/scroll-ring-pear.glb")
 
     viewer.getPlugin(TonemapPlugin).contrast = 1.06
 
 
 
 
-    // viewer.getPlugin(TonemapPlugin)!.config!.clipBackground = true if we need clipped background
+    // viewer.getPlugin(TonemapPlugin)!.con ig!.clipBackground = true if we need clipped background
 
     viewer.scene.activeCamera.setCameraOptions({controlsEnabled: false})
 
