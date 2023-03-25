@@ -1,0 +1,1199 @@
+{
+  "version": "0.7.01",
+  "plugins": [
+    {
+      "exportOptions": {
+        "compress": true,
+        "name": "scene",
+        "viewerConfig": true,
+        "convertMeshToIndexed": false,
+        "embedUrlImages": false,
+        "dracoOptions": {
+          "encodeSpeed": 5,
+          "method": 1,
+          "quantizationVolume": "mesh",
+          "quantizationBits": {
+            "POSITION": 14,
+            "NORMAL": 10,
+            "COLOR": 8,
+            "TEX_COORD": 12,
+            "GENERIC": 12
+          }
+        }
+      },
+      "type": "AssetExporterPlugin"
+    },
+    {
+      "type": "GLTFDracoExportPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "AssetManagerBasicPopupPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "AssetManagerLoadingBarPlugin"
+    },
+    {
+      "enabled": true,
+      "autoFocus": false,
+      "type": "Picking"
+    },
+    {
+      "enabled": true,
+      "type": "GBuffer",
+      "pass": {}
+    },
+    {
+      "maxFrameCount": 32,
+      "jitter": true,
+      "type": "Progressive",
+      "passes": {
+        "progressive": {
+          "enabled": true
+        }
+      }
+    },
+    {
+      "extension": {
+        "enabled": false,
+        "aberrationIntensity": 0.01
+      },
+      "enabled": true,
+      "type": "ChromaticAberration"
+    },
+    {
+      "extension": {
+        "toneMapping": 4,
+        "tonemapBackground": true,
+        "clipBackground": false,
+        "exposure": 1,
+        "saturation": 0.96,
+        "contrast": 1.1400000000000001
+      },
+      "enabled": true,
+      "type": "Tonemap"
+    },
+    {
+      "extension": {
+        "enabled": true,
+        "lutBackground": false,
+        "intensity": 0.2,
+        "lutMap": {
+          "uuid": "d70eadbc-5178-4a1c-b1ea-4cb89ddf5f6b",
+          "resource": "extras",
+          "serializableClassId": "LUTCubeTextureWrapper"
+        }
+      },
+      "enabled": true,
+      "type": "LUTPlugin1"
+    },
+    {
+      "extension": {
+        "enabled": false,
+        "power": 0.5,
+        "bgcolor": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "isColor": true
+        }
+      },
+      "enabled": true,
+      "type": "Vignette"
+    },
+    {
+      "extension": {
+        "enabled": false,
+        "grainMultiply": false,
+        "grainIntensity": 10
+      },
+      "enabled": true,
+      "type": "FilmicGrain"
+    },
+    {
+      "extension": {},
+      "enabled": true,
+      "type": "GammaCorrection"
+    },
+    {
+      "type": "SSReflection",
+      "passes": {
+        "ssr": {
+          "intensity": 1,
+          "boost": {
+            "x": 1,
+            "y": 1,
+            "z": 1,
+            "isVector3": true
+          },
+          "objectRadius": 1,
+          "autoRadius": true,
+          "power": 1.1,
+          "tolerance": 0.5,
+          "stepCount": 16,
+          "lowQualityFrames": 0,
+          "maskFrontRays": true,
+          "maskFrontFactor": -0.2,
+          "enabled": true
+        }
+      }
+    },
+    {
+      "type": "SSAO",
+      "passes": {
+        "ssao": {
+          "bilateralPass": {
+            "smoothEnabled": true,
+            "edgeSharpness": 0.1,
+            "enabled": true
+          },
+          "parameters": {
+            "intensity": 0.16,
+            "occlusionWorldRadius": 1,
+            "bias": 0.001,
+            "falloff": 1.3555000000000001
+          },
+          "enabled": true
+        }
+      }
+    },
+    {
+      "envMap": {
+        "uuid": "ac85ef05-9094-4cd1-ac77-2222f7a31408",
+        "resource": "textures"
+      },
+      "envMap2": null,
+      "envMap3": null,
+      "forceSceneEnvMap": false,
+      "type": "Diamond"
+    },
+    {
+      "enabled": true,
+      "type": "FrameFade",
+      "pass": {
+        "enabled": true
+      }
+    },
+    {
+      "autoIncrementTime": true,
+      "loopAnimations": true,
+      "loopRepetitions": "Infinity",
+      "timeScale": 1,
+      "animationSpeed": 1,
+      "animateOnScroll": false,
+      "animateOnDrag": false,
+      "type": "GLTFAnimation"
+    },
+    {
+      "bakedShadows": true,
+      "groundReflection": true,
+      "physicalReflections": true,
+      "shadowBaker": {
+        "randomizedLight": {
+          "object": {
+            "uuid": "65a130fa-5434-4b79-be23-763c409b85e5",
+            "type": "DirectionalLight",
+            "castShadow": true,
+            "layers": 32,
+            "matrix": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "color": 16777215,
+            "intensity": 10,
+            "shadow": {
+              "radius": 10,
+              "mapSize": [
+                1024,
+                1024
+              ],
+              "camera": {
+                "uuid": "ed738ea5-93b5-401f-ac65-6c2c0eb43e34",
+                "type": "OrthographicCamera",
+                "layers": 1,
+                "zoom": 1,
+                "left": -2,
+                "right": 2,
+                "top": 2,
+                "bottom": -2,
+                "near": -2,
+                "far": 41,
+                "view": {
+                  "enabled": true,
+                  "fullWidth": 1024,
+                  "fullHeight": 1024,
+                  "offsetX": -0.25,
+                  "offsetY": 0.375,
+                  "width": 1024,
+                  "height": 1024
+                }
+              }
+            }
+          },
+          "userData": {},
+          "type": "DirectionalLight2",
+          "target": [
+            0.12375984209113254,
+            -0.990683728699414,
+            -0.05682650064717955
+          ],
+          "shadowParams": {
+            "enabled": true,
+            "radius": 10,
+            "width": 1024,
+            "height": 1024,
+            "bias": 0,
+            "normalBias": 0,
+            "near": 1.5,
+            "far": 20,
+            "frustumSize": 4
+          },
+          "randomParams": {
+            "focus": 1,
+            "spread": 1,
+            "distanceScale": 20,
+            "minDistanceScale": {
+              "x": 10,
+              "y": 10,
+              "z": 10,
+              "isVector3": true
+            },
+            "normalDirection": {
+              "x": 0,
+              "y": 1,
+              "z": 0,
+              "isVector3": true
+            },
+            "direction": {
+              "x": 0.2,
+              "y": 0.96,
+              "z": 0.2,
+              "isVector3": true
+            }
+          }
+        },
+        "maxFrameNumber": 400,
+        "smoothShadow": false,
+        "groundMapMode": "aoMap",
+        "alphaVignette": true,
+        "alphaVignetteAxis": "xy"
+      },
+      "material": {
+        "uuid": "89e5075e-9f5f-46e2-8b6d-0d796d59712d",
+        "resource": "materials"
+      },
+      "visible": true,
+      "size": 8,
+      "yOffset": 0,
+      "renderToDepth": true,
+      "tonemapGround": true,
+      "limitCameraAboveGround": false,
+      "type": "Ground"
+    },
+    {
+      "enabled": true,
+      "type": "Bloom",
+      "pass": {
+        "threshold": 2,
+        "softThreshold": 0.54,
+        "intensity": 0.39,
+        "bloomIterations": 4,
+        "radius": 0.48,
+        "power": 0.59,
+        "enabled": true
+      }
+    },
+    {
+      "enabled": true,
+      "type": "AnisotropyPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "TriplanarUVMappingPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "ThinFilmLayerPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "FragmentClippingExtensionPlugin1"
+    },
+    {
+      "enabled": true,
+      "type": "NoiseBumpMaterialPlugin"
+    },
+    {
+      "enabled": true,
+      "bicubicFiltering": true,
+      "type": "CustomBumpMapPlugin"
+    },
+    {
+      "enabled": true,
+      "type": "ClearcoatTintPlugin"
+    },
+    {
+      "enabled": false,
+      "type": "VelocityBuffer",
+      "pass": {}
+    },
+    {
+      "enabled": true,
+      "type": "TAA",
+      "pass": {
+        "feedBack": {
+          "x": 0.88,
+          "y": 0.97,
+          "isVector2": true
+        },
+        "enabled": true
+      }
+    },
+    {
+      "cameraViews": [
+        {
+          "position": {
+            "x": 2.4503556856270112,
+            "y": 6.089360262756052,
+            "z": 0.07744706759532831,
+            "isVector3": true
+          },
+          "target": {
+            "x": -0.17156502411923885,
+            "y": 0.24125938847817294,
+            "z": 0.07931200770094993,
+            "isVector3": true
+          },
+          "quaternion": {
+            "x": -0.3842125607517719,
+            "y": 0.5937391707949392,
+            "z": 0.38448594363541744,
+            "w": 0.5933170015860717,
+            "isQuaternion": true
+          },
+          "up": {
+            "x": -0.912488188919029,
+            "y": 0.40910253461469726,
+            "z": 0.000649041678909501,
+            "isVector3": true
+          },
+          "name": "#view3",
+          "serializableClassId": "CameraView"
+        },
+        {
+          "position": {
+            "x": -7.864895005979266,
+            "y": 0.8754190055131805,
+            "z": 0.147656538014308,
+            "isVector3": true
+          },
+          "target": {
+            "x": -0.19006377989341433,
+            "y": 0.08147546777028525,
+            "z": -0.014203079962029411,
+            "isVector3": true
+          },
+          "quaternion": {
+            "x": -0.03680243830084542,
+            "y": -0.6986837831039249,
+            "z": -0.03603447068644433,
+            "w": 0.7135741507965713,
+            "isQuaternion": true
+          },
+          "up": {
+            "x": 0.10285306727793386,
+            "y": 0.9946941949149207,
+            "z": -0.0021691367128331422,
+            "isVector3": true
+          },
+          "name": "#view4",
+          "serializableClassId": "CameraView"
+        },
+        {
+          "position": {
+            "x": 1.6734750061464156,
+            "y": 3.6010301217766036,
+            "z": -1.2384435726136402,
+            "isVector3": true
+          },
+          "target": {
+            "x": -0.22421353745282804,
+            "y": 0.5187747521808077,
+            "z": 0.25852502224750307,
+            "isVector3": true
+          },
+          "quaternion": {
+            "x": -0.19089596258860048,
+            "y": 0.8091030034393945,
+            "z": 0.39372666809418616,
+            "w": 0.39228863369230255,
+            "isQuaternion": true
+          },
+          "up": {
+            "x": -0.6178179866995638,
+            "y": 0.6170760845976444,
+            "z": 0.48735822669586526,
+            "isVector3": true
+          },
+          "name": "#view5",
+          "serializableClassId": "CameraView"
+        }
+      ],
+      "viewLooping": false,
+      "viewPauseTime": 200,
+      "animEase": "easeInOutSine",
+      "animDuration": 3000,
+      "rotationOffset": 0.25,
+      "interpolateMode": "spherical",
+      "seekOnScroll": false,
+      "type": "CameraViews"
+    },
+    {
+      "enabled": false,
+      "rdLight": {
+        "object": {
+          "uuid": "af29617f-128f-4b67-a3ad-bbaa0c9ae0cb",
+          "type": "DirectionalLight",
+          "castShadow": true,
+          "layers": 0,
+          "matrix": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          "color": 13430527,
+          "intensity": 1,
+          "shadow": {
+            "bias": -0.001,
+            "radius": 2,
+            "mapSize": [
+              1024,
+              1024
+            ],
+            "camera": {
+              "uuid": "1b964253-efa1-47c4-9e35-653853872456",
+              "type": "OrthographicCamera",
+              "layers": 1,
+              "zoom": 1,
+              "left": -2,
+              "right": 2,
+              "top": 2,
+              "bottom": -2,
+              "near": -2,
+              "far": 9,
+              "view": {
+                "enabled": true,
+                "fullWidth": 1024,
+                "fullHeight": 1024,
+                "offsetX": -0.25,
+                "offsetY": 0.375,
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          }
+        },
+        "userData": {},
+        "type": "DirectionalLight2",
+        "target": [
+          0,
+          0,
+          -1
+        ],
+        "shadowParams": {
+          "enabled": true,
+          "radius": 2,
+          "width": 1024,
+          "height": 1024,
+          "bias": -0.001,
+          "normalBias": 0,
+          "near": 1.5,
+          "far": 4,
+          "frustumSize": 4
+        },
+        "randomParams": {
+          "focus": 1,
+          "spread": 0.01,
+          "distanceScale": 50,
+          "minDistanceScale": {
+            "x": 10,
+            "y": 10,
+            "z": 10,
+            "isVector3": true
+          },
+          "normalDirection": {
+            "x": 0.010203019316098974,
+            "y": 0.9998958929776994,
+            "z": 0.010203019316098974,
+            "isVector3": true
+          },
+          "direction": {
+            "x": -0.9,
+            "y": 0.5,
+            "z": -1,
+            "isVector3": true
+          }
+        }
+      },
+      "lightLayers": 1,
+      "type": "RandomizedDirectionalLight"
+    },
+    {
+      "enabled": false,
+      "worldRadius": 100,
+      "tripodHeight": 10,
+      "type": "HDRiGroundPlugin"
+    },
+    {
+      "enableEdit": false,
+      "focalPoint": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "isVector3": true
+      },
+      "crossFadeTime": 200,
+      "enabled": false,
+      "type": "DepthOfField",
+      "pass": {
+        "nearFarBlurScale": {
+          "x": 0.25,
+          "y": 0.25,
+          "isVector2": true
+        },
+        "focalDepthRange": {
+          "x": 0.5,
+          "y": 1.5,
+          "isVector2": true
+        },
+        "enabled": false
+      }
+    },
+    {
+      "enabled": false,
+      "radius": 0.015,
+      "intensity": 1,
+      "tolerance": 1.5,
+      "onlySSCSDebug": false,
+      "stepCount": 2,
+      "type": "SSContactShadows"
+    },
+    {
+      "type": "SSGI",
+      "passes": {
+        "ssrtgi": {
+          "bilateralPass": {
+            "smoothEnabled": true,
+            "edgeSharpness": 0.1,
+            "enabled": true
+          },
+          "intensity": 2,
+          "power": 1.1,
+          "autoRadius": true,
+          "objectRadius": 2,
+          "tolerance": 1,
+          "bias": 0.15,
+          "falloff": 0.7,
+          "rayCount": 2,
+          "stepCount": 4,
+          "smoothEnabled": true,
+          "enabled": false
+        }
+      }
+    },
+    {
+      "enabled": true,
+      "type": "NormalBufferPlugin",
+      "pass": {}
+    },
+    {
+      "enabled": true,
+      "type": "SSBevelPlugin",
+      "pass": {
+        "enabled": true
+      }
+    },
+    {
+      "extension": {
+        "enabled": true,
+        "enableHighlight": false,
+        "enableDynamicSelection": true,
+        "outlineIntensity": 2,
+        "highlightTransparency": 0.84,
+        "outlineColor": {
+          "r": 0.8196078431372549,
+          "g": 0.2784313725490196,
+          "b": 0.06666666666666667,
+          "isColor": true
+        }
+      },
+      "enabled": true,
+      "type": "Outline"
+    },
+    {
+      "stepCount": 12,
+      "binaryStepCount": 3,
+      "type": "ReliefParallaxMapping"
+    },
+    {
+      "enabled": false,
+      "overCanvas": true,
+      "type": "CSS3DRenderer"
+    },
+    {
+      "enabled": true,
+      "type": "ObjectRotationPlugin"
+    },
+    {
+      "type": "ShapeTubeExtrudePlugin"
+    },
+    {
+      "type": "SimpleTextPlugin"
+    },
+    {
+      "variations": [
+        {
+          "uuid": "Metal",
+          "title": "Metal",
+          "preview": "color",
+          "materials": [
+            {
+              "uuid": "f4ead21b-bc20-4e4c-a439-87a594bc06a3",
+              "resource": "materials"
+            },
+            {
+              "uuid": "91de514e-ef89-4a1a-b2ee-bf0dcc6ca671",
+              "resource": "materials"
+            },
+            {
+              "uuid": "8e7947bb-b89d-4c16-a1fc-bdfc1c876e64",
+              "resource": "materials"
+            }
+          ]
+        }
+      ],
+      "type": "MaterialConfiguratorPlugin"
+    },
+    {
+      "variations": [
+        {
+          "name": "Basket",
+          "selected": "Cushion_Halo",
+          "title": "Basket",
+          "camView": "top",
+          "camDistance": 1
+        },
+        {
+          "name": "Ring",
+          "selected": "Soli",
+          "title": "Ring",
+          "camView": "right",
+          "camDistance": 1
+        }
+      ],
+      "type": "SwitchNodePlugin"
+    },
+    {
+      "type": "MaterialLibraryPlugin"
+    },
+    {
+      "convergeMode": false,
+      "mimeType": "auto",
+      "videoFrameRate": 30,
+      "type": "CanvasRecorder"
+    },
+    {
+      "filename": "snapshot.png",
+      "type": "CanvasSnipper"
+    },
+    {
+      "version": 1,
+      "mode": "full",
+      "scale": 1,
+      "type": "RendererParamsUiPlugin"
+    },
+    {
+      "useNormals": true,
+      "chartOptions": {
+        "fixWinding": false,
+        "maxBoundaryLength": 0,
+        "maxChartArea": 0,
+        "maxCost": 2,
+        "maxIterations": 1,
+        "normalDeviationWeight": 2,
+        "normalSeamWeight": 4,
+        "roundnessWeight": 0.009999999776482582,
+        "straightnessWeight": 6,
+        "textureSeamWeight": 0.5,
+        "useInputMeshUvs": false,
+        "serializableClassId": "UChartOptions"
+      },
+      "packOptions": {
+        "bilinear": true,
+        "blockAlign": false,
+        "bruteForce": false,
+        "createImage": false,
+        "maxChartSize": 0,
+        "padding": 0,
+        "resolution": 0,
+        "rotateCharts": true,
+        "rotateChartsToAxis": true,
+        "texelsPerUnit": 0,
+        "serializableClassId": "UPackOptions"
+      },
+      "type": "XAtlasPlugin"
+    }
+  ],
+  "scene": {
+    "defaultCamera": {
+      "camControls": {
+        "type": "OrbitControls",
+        "dollyZoom": false,
+        "enableDamping": true,
+        "dampingFactor": 0.08,
+        "autoRotate": false,
+        "autoRotateSpeed": 2,
+        "enableZoom": true,
+        "zoomSpeed": 0.15,
+        "maxZoomSpeed": 0.2,
+        "enableRotate": true,
+        "rotateSpeed": 2,
+        "enablePan": true,
+        "panSpeed": 1,
+        "autoPushTarget": false,
+        "minDistance": 2,
+        "maxDistance": 10,
+        "minZoom": 0.01,
+        "maxZoom": 1000,
+        "minPolarAngle": 0,
+        "maxPolarAngle": 3.141592653589793,
+        "minAzimuthAngle": -10000,
+        "maxAzimuthAngle": 10000,
+        "screenSpacePanning": true,
+        "keyPanSpeed": 7
+      },
+      "userData": {},
+      "camOptions": {
+        "type": "PerspectiveCamera",
+        "aspect": "auto",
+        "focus": 10,
+        "fov": 25,
+        "zoom": 1,
+        "frustumSize": 1,
+        "top": 1,
+        "bottom": -1,
+        "left": -1,
+        "right": 1,
+        "controlsMode": "orbit",
+        "controlsEnabled": true
+      },
+      "position": {
+        "x": 1.9591213831692373,
+        "y": 4.993679625656806,
+        "z": 0.07779647654141318,
+        "isVector3": true
+      },
+      "target": {
+        "x": -0.17156502411923885,
+        "y": 0.24125938847817294,
+        "z": 0.07931200770094993,
+        "isVector3": true
+      }
+    },
+    "envMapIntensity": 0.9,
+    "fixedEnvMapDirection": false,
+    "environment": {
+      "uuid": "55ee0d8b-ae59-4f0d-ab98-46d0b9fcda81",
+      "resource": "textures"
+    }
+  },
+  "background": 13354411,
+  "backgroundIntensity": 1,
+  "useLegacyLights": true,
+  "resources": {
+    "geometries": {},
+    "materials": {
+      "89e5075e-9f5f-46e2-8b6d-0d796d59712d": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Material",
+          "generator": "Material.toJSON"
+        },
+        "uuid": "89e5075e-9f5f-46e2-8b6d-0d796d59712d",
+        "type": "MeshStandardMaterial2",
+        "name": "BaseGroundMaterial",
+        "color": 16777215,
+        "roughness": 0.5,
+        "metalness": 0.5,
+        "sheen": 0,
+        "sheenColor": 0,
+        "sheenRoughness": 1,
+        "emissive": 0,
+        "specularIntensity": 1,
+        "specularColor": 16777215,
+        "clearcoat": 0,
+        "clearcoatRoughness": 0,
+        "iridescence": 0,
+        "iridescenceIOR": 1.3,
+        "iridescenceThicknessRange": [
+          100,
+          400
+        ],
+        "envMapIntensity": 0.9,
+        "reflectivity": 0.49999999999999983,
+        "transmission": 0,
+        "thickness": 0,
+        "attenuationDistance": 0,
+        "attenuationColor": 16777215,
+        "blending": 0,
+        "opacity": 0.9088467349336915,
+        "transparent": true,
+        "depthFunc": 3,
+        "depthTest": true,
+        "depthWrite": true,
+        "colorWrite": true,
+        "stencilWrite": false,
+        "stencilWriteMask": 255,
+        "stencilFunc": 519,
+        "stencilRef": 0,
+        "stencilFuncMask": 255,
+        "stencilFail": 7680,
+        "stencilZFail": 7680,
+        "stencilZPass": 7680,
+        "fog": false,
+        "userData": {
+          "uuid": "8c59c12b-a047-4f81-94be-53c008898bc5",
+          "renderToDepth": true,
+          "postTonemap": true,
+          "ssaoDisabled": true,
+          "sscsDisabled": true,
+          "ssreflDisabled": true,
+          "ssreflNonPhysical": false,
+          "gMapMode": "aoMap",
+          "ALPHA_I_RGBA_PACKING": false,
+          "enableLUT": true,
+          "_1330dca6-50c1-4ad5-9ddf-fdbc76d67b52_version": 6,
+          "_432cb26b-c4b6-47cb-8896-e183ff380db6_version": 3,
+          "LUTPlugin1": {
+            "enable": false,
+            "index": 0
+          },
+          "_3360d10f-8978-4104-ab37-09b16e54334d_version": 1
+        }
+      },
+      "f4ead21b-bc20-4e4c-a439-87a594bc06a3": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Material",
+          "generator": "Material.toJSON"
+        },
+        "uuid": "f4ead21b-bc20-4e4c-a439-87a594bc06a3",
+        "type": "MeshStandardMaterial2",
+        "name": "White Gold",
+        "color": 10461087,
+        "roughness": 0,
+        "metalness": 1,
+        "sheen": 0,
+        "sheenColor": 0,
+        "sheenRoughness": 1,
+        "emissive": 0,
+        "specularIntensity": 1,
+        "specularColor": 16777215,
+        "clearcoat": 0,
+        "clearcoatRoughness": 0,
+        "iridescence": 0,
+        "iridescenceIOR": 1.3,
+        "iridescenceThicknessRange": [
+          100,
+          400
+        ],
+        "envMapIntensity": 1,
+        "reflectivity": 0.49999999999999983,
+        "transmission": 0,
+        "thickness": 0,
+        "attenuationDistance": 0,
+        "attenuationColor": 16777215,
+        "side": 2,
+        "depthFunc": 3,
+        "depthTest": true,
+        "depthWrite": true,
+        "colorWrite": true,
+        "stencilWrite": false,
+        "stencilWriteMask": 255,
+        "stencilFunc": 519,
+        "stencilRef": 0,
+        "stencilFuncMask": 255,
+        "stencilFail": 7680,
+        "stencilZFail": 7680,
+        "stencilZPass": 7680,
+        "fog": false,
+        "userData": {
+          "cloneId": "0_1",
+          "cloneCount": 0,
+          "_ssBevel": {
+            "hasSSBevel": true,
+            "radius": 3.5
+          },
+          "LUTPlugin1": {
+            "enable": false,
+            "index": 0
+          },
+          "uuid": "f4ead21b-bc20-4e4c-a439-87a594bc06a3"
+        }
+      },
+      "91de514e-ef89-4a1a-b2ee-bf0dcc6ca671": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Material",
+          "generator": "Material.toJSON"
+        },
+        "uuid": "91de514e-ef89-4a1a-b2ee-bf0dcc6ca671",
+        "type": "MeshStandardMaterial2",
+        "name": "Gold",
+        "color": 15829818,
+        "roughness": 0,
+        "metalness": 1,
+        "sheen": 0,
+        "sheenColor": 0,
+        "sheenRoughness": 1,
+        "emissive": 0,
+        "specularIntensity": 1,
+        "specularColor": 16777215,
+        "clearcoat": 0,
+        "clearcoatRoughness": 0,
+        "iridescence": 0,
+        "iridescenceIOR": 1.3,
+        "iridescenceThicknessRange": [
+          100,
+          400
+        ],
+        "envMapIntensity": 1,
+        "reflectivity": 0.49999999999999983,
+        "transmission": 0,
+        "thickness": 0,
+        "attenuationDistance": 0,
+        "attenuationColor": 16777215,
+        "side": 2,
+        "depthFunc": 3,
+        "depthTest": true,
+        "depthWrite": true,
+        "colorWrite": true,
+        "stencilWrite": false,
+        "stencilWriteMask": 255,
+        "stencilFunc": 519,
+        "stencilRef": 0,
+        "stencilFuncMask": 255,
+        "stencilFail": 7680,
+        "stencilZFail": 7680,
+        "stencilZPass": 7680,
+        "fog": false,
+        "userData": {
+          "cloneId": "0_2",
+          "cloneCount": 0,
+          "_ssBevel": {
+            "hasSSBevel": true,
+            "radius": 3.5
+          },
+          "LUTPlugin1": {
+            "enable": false,
+            "index": 0
+          },
+          "uuid": "91de514e-ef89-4a1a-b2ee-bf0dcc6ca671"
+        }
+      },
+      "8e7947bb-b89d-4c16-a1fc-bdfc1c876e64": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Material",
+          "generator": "Material.toJSON"
+        },
+        "uuid": "8e7947bb-b89d-4c16-a1fc-bdfc1c876e64",
+        "type": "MeshStandardMaterial2",
+        "name": "Rose Gold",
+        "color": 14840387,
+        "roughness": 0,
+        "metalness": 1,
+        "sheen": 0,
+        "sheenColor": 0,
+        "sheenRoughness": 1,
+        "emissive": 0,
+        "specularIntensity": 1,
+        "specularColor": 16777215,
+        "clearcoat": 0,
+        "clearcoatRoughness": 0,
+        "iridescence": 0,
+        "iridescenceIOR": 1.3,
+        "iridescenceThicknessRange": [
+          100,
+          400
+        ],
+        "envMapIntensity": 1,
+        "reflectivity": 0.49999999999999983,
+        "transmission": 0,
+        "thickness": 0,
+        "attenuationDistance": 0,
+        "attenuationColor": 16777215,
+        "side": 2,
+        "depthFunc": 3,
+        "depthTest": true,
+        "depthWrite": true,
+        "colorWrite": true,
+        "stencilWrite": false,
+        "stencilWriteMask": 255,
+        "stencilFunc": 519,
+        "stencilRef": 0,
+        "stencilFuncMask": 255,
+        "stencilFail": 7680,
+        "stencilZFail": 7680,
+        "stencilZPass": 7680,
+        "fog": false,
+        "userData": {
+          "cloneId": "0_3",
+          "cloneCount": 0,
+          "_ssBevel": {
+            "hasSSBevel": true,
+            "radius": 3.5
+          },
+          "LUTPlugin1": {
+            "enable": false,
+            "index": 0
+          },
+          "uuid": "8e7947bb-b89d-4c16-a1fc-bdfc1c876e64"
+        }
+      }
+    },
+    "textures": {
+      "ac85ef05-9094-4cd1-ac77-2222f7a31408": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Texture",
+          "generator": "Texture.toJSON"
+        },
+        "uuid": "ac85ef05-9094-4cd1-ac77-2222f7a31408",
+        "name": "",
+        "image": "59e0c806-83f0-404f-82f6-bb685d1e4609",
+        "mapping": 300,
+        "repeat": [
+          1,
+          1
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "center": [
+          0,
+          0
+        ],
+        "rotation": 1.6964600329384885,
+        "wrap": [
+          1001,
+          1001
+        ],
+        "format": 1023,
+        "internalFormat": null,
+        "type": 1016,
+        "encoding": 3000,
+        "minFilter": 1006,
+        "magFilter": 1006,
+        "anisotropy": 1,
+        "flipY": true,
+        "generateMipmaps": false,
+        "premultiplyAlpha": false,
+        "unpackAlignment": 1,
+        "userData": {
+          "rootPath": "https://demo-assets.pixotronics.com/pixo/presets/environment/env-gem-1.hdr"
+        }
+      },
+      "55ee0d8b-ae59-4f0d-ab98-46d0b9fcda81": {
+        "metadata": {
+          "version": 4.5,
+          "type": "Texture",
+          "generator": "Texture.toJSON"
+        },
+        "uuid": "55ee0d8b-ae59-4f0d-ab98-46d0b9fcda81",
+        "name": "",
+        "image": "ee92aa26-3a5b-423a-b851-42c0892f943e",
+        "mapping": 303,
+        "repeat": [
+          1,
+          1
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "center": [
+          0,
+          0
+        ],
+        "rotation": 0,
+        "wrap": [
+          1001,
+          1001
+        ],
+        "format": 1023,
+        "internalFormat": null,
+        "type": 1016,
+        "encoding": 3001,
+        "minFilter": 1006,
+        "magFilter": 1006,
+        "anisotropy": 1,
+        "flipY": true,
+        "generateMipmaps": false,
+        "premultiplyAlpha": false,
+        "unpackAlignment": 1,
+        "userData": {
+          "rootPath": "https://demo.realvwr.com/media/files/2/lightmap-r-2.hdr"
+        }
+      }
+    },
+    "images": {},
+    "shapes": {},
+    "skeletons": {},
+    "animations": {},
+    "extras": {
+      "d70eadbc-5178-4a1c-b1ea-4cb89ddf5f6b": {
+        "uuid": "d70eadbc-5178-4a1c-b1ea-4cb89ddf5f6b",
+        "url": {
+          "data": "data:application/octet-stream;base64,I0NyZWF0ZWQgYnk6IEFkb2JlIFBob3Rvc2hvcCBFeHBvcnQgQ29sb3IgTG9va3VwIFBsdWdpbgojQ29weXJpZ2h0OiAoQykgQ29weXJpZ2h0IDIwMjIgcmVhbHZ3ci4KVElUTEUgImRpYS0yLnBzZCIKCiNMVVQgc2l6ZQpMVVRfM0RfU0laRSA4CgojZGF0YSBkb21haW4KRE9NQUlOX01JTiAwLjAgMC4wIDAuMApET01BSU5fTUFYIDEuMCAxLjAgMS4wCgojTFVUIGRhdGEgcG9pbnRzCjAuMDAwMDAwIDAuMDAwMDAwIDAuMDAwMDAwCjAuMDc2OTM1IDAuMDYyNTAwIDAuMDYyNTAwCjAuMjgwNzYyIDAuMTgwOTA4IDAuMTgwOTA4CjAuNjU0NTEwIDAuMzUyMTEyIDAuMzUyMTEyCjAuODk1MTQyIDAuNTU2NzAyIDAuNTU2NzAyCjAuOTcxMDY5IDAuNzM2MTE1IDAuNzM2MTE1CjEuMDAwMDAwIDAuODg2NTk3IDAuODg2NTk3CjEuMDAwMDAwIDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAwNzYzIDAuMDA2NTYxIDAuMDY5MTIyCjAuMDgzMTkxIDAuMDgzMTkxIDAuMDAwNDU4CjAuMjkyMTc1IDAuMjM4NTU2IDAuMDYyMTM0CjAuNjY3MjA2IDAuNDY0NTY5IDAuMTc3NjQzCjAuOTA0MjM2IDAuNjY3NDE5IDAuMzM0MzUxCjAuOTc4MjEwIDAuODAxNzI3IDAuNTI3MDY5CjEuMDAwMDAwIDAuOTE1MDcwIDAuNzI3NjAwCjEuMDAwMDAwIDEuMDAwMDAwIDAuODgxMzE3CjAuMDAxNTI2IDAuMDMzNDc4IDAuMjA1MjMxCjAuMDk4OTY5IDAuMTM1MzE1IDAuMDY3ODcxCjAuMzAzODMzIDAuMzAzODMzIDAuMDAwMzA1CjAuNjc5NzE4IDAuNTg0MzUxIDAuMDYwMTUwCjAuOTEzMTc3IDAuNzY2MTc0IDAuMTY0OTQ4CjAuOTg1MDQ2IDAuODYxODE2IDAuMzA5Mjk2CjEuMDAwMDAwIDAuOTM2MDY2IDAuNTMxMDA2CjEuMDAwMDAwIDEuMDAwMDAwIDAuNzIwOTc4CjAuMDAyMzUwIDAuMTEzODAwIDAuNDA4Mjk1CjAuMTE3NTg0IDAuMjYzMjE0IDAuMjAxMTExCjAuMzU4NDI5IDAuNDczOTY5IDAuMDY1Mzk5CjAuNjg3ODM2IDAuNzAxOTA0IDAuMDAwMDAwCjAuOTIxOTM2IDAuODU0MDA0IDAuMDUyNDYwCjAuOTkxNDg2IDAuOTE2MzIxIDAuMTQ3MjE3CjEuMDAwMDAwIDAuOTU0NjUxIDAuMzI0NTg1CjEuMDAwMDAwIDEuMDAwMDAwIDAuNTIyODI3CjAuMDAwMTUzIDAuMTU0ODE2IDAuNjM0MTU1CjAuMTEyNzYyIDAuMzI2OTk2IDAuMzg5MTkxCjAuMzQxMjQ4IDAuNTQ0MTI4IDAuMTgyOTIyCjAuNjc0Mjg2IDAuNzYxMTY5IDAuMDU3ODAwCjAuOTE2MzgyIDAuOTE2MzgyIDAuMDAwMDAwCjAuOTk3NDM3IDAuOTY0NTA4IDAuMDQyMDg0CjEuMDAwMDAwIDAuOTcxNTU4IDAuMTY2Njg3CjEuMDAwMDAwIDEuMDAwMDAwIDAuMzE3NzQ5CjAuMDAwMDAwIDAuMTgxMTIyIDAuNzgyOTkwCjAuMDgwOTk0IDAuMzM1Nzg1IDAuNTk5MTIxCjAuMjYxMDc4IDAuNTI5NjAyIDAuMzQ2OTg1CjAuNTQ2MTczIDAuNzIzMzU4IDAuMTYyMjkyCjAuODE2OTU2IDAuODg0ODI3IDAuMDQ2NDE3CjAuOTgwMjU1IDAuOTgwMjU1IDAuMDAwMDAwCjEuMDAwMDAwIDAuOTg2ODE2IDAuMDU4ODk5CjEuMDAwMDAwIDEuMDAwMDAwIDAuMTYxNzQzCjAuMDAwMDAwIDAuMjI5MDk1IDAuOTA2MzcyCjAuMDUzOTg2IDAuMzYzMTkwIDAuNzgwNTQ4CjAuMTk3Nzg0IDAuNTM4OTcxIDAuNTY2NjgxCjAuNDA3Nzc2IDAuNjg5NDg0IDAuMzE0NTQ1CjAuNjgwNjAzIDAuODM0NzE3IDAuMTQ0Njg0CjAuODk0MTY1IDAuOTUyNzg5IDAuMDM3MjMxCjEuMDAwMDAwIDEuMDAwMDAwIDAuMDAxMTkwCjEuMDAwMDAwIDEuMDAwMDAwIDAuMDU1ODQ3CjAuMDAwMDAwIDAuMjgyNDQwIDEuMDAwMDAwCjAuMDMxNzM4IDAuMzkxNDc5IDAuOTI2NDIyCjAuMTM2NjI3IDAuNTM3MTQwIDAuNzU1NzM3CjAuMjk4NzY3IDAuNjY2OTAxIDAuNTI4NTk1CjAuNTE5OTI4IDAuNzgwNTE4IDAuMjkxODQwCjAuNzQ2Njc0IDAuODg4NzAyIDAuMTMwMjgwCjAuOTIzMDM1IDAuOTc2OTkwIDAuMDMwMDYwCjEuMDAwMDAwIDEuMDAwMDAwIDAuMDAwMDAwCjAuMDAxNDA0IDAuMDAyOTYwIDAuMDQyMjA2CjAuMDA1ODI5IDAuMDY3NDc0IDAuMDgyMzA2CjAuMTI1MjQ0IDAuMTg3NTMxIDAuMjM1NTk2CjAuNDI4MTAxIDAuMzYzMDM3IDAuNDYyNTI0CjAuNzI2NjU0IDAuNTcwNzA5IDAuNjY3MzU4CjAuODI3MzAxIDAuNzQ3NjgxIDAuODAxNjY2CjAuODcxMDAyIDAuODkzOTgyIDAuOTE1OTg1CjAuODgxMzE3IDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAyNjI1IDAuMDA5MDMzIDAuMDA5MDMzCjAuMDE5ODA2IDAuMDE5ODA2IDAuMDE5ODA2CjAuMTgyODAwIDAuMTIxMzA3IDAuMTIxMzA3CjAuNTU1MzU5IDAuMjkyMjM2IDAuMjkyMjM2CjAuODQ2MTMwIDAuNDgyNDIyIDAuNDgyNDIyCjAuOTUwNzQ1IDAuNjQzNzA3IDAuNjQzNzA3CjAuOTk5MTQ2IDAuNzg0NjY4IDAuNzg0NjY4CjEuMDAwMDAwIDAuOTEzNDUyIDAuOTEzNDUyCjAuMDAzMTQzIDAuMDQ4NDYyIDAuMTA4MjQ2CjAuMDI5NTEwIDAuMDY1NzM1IDAuMTMyNDE2CjAuMTkyMTM5IDAuMTkyMTM5IDAuMDI3NzcxCjAuNTY5MzY2IDAuNDI5MDQ3IDAuMTM1MzQ1CjAuODU2MDQ5IDAuNjMzMzYyIDAuMjc0Mzg0CjAuOTU4NTU3IDAuNzQ1MDU2IDAuNDE4Mzk2CjEuMDAwMDAwIDAuODQ1ODI1IDAuNTk5MDkxCjEuMDAwMDAwIDAuOTMyMDA3IDAuNzYxNTM2CjAuMDAzNjYyIDAuMTU3NTMyIDAuMjkzMjc0CjAuMDQwNjE5IDAuMTg0Nzg0IDAuMzI5NTU5CjAuMjMzMzM3IDAuMzU5MzE0IDAuMTQyODgzCjAuNTgyMzY3IDAuNTk4MDIyIDAuMDM1MDk1CjAuODY1ODQ1IDAuNzYzNjcyIDAuMTIzMDQ3CjAuOTY2MTU2IDAuODM1MjY2IDAuMjI2MTM1CjEuMDAwMDAwIDAuODkzOTgyIDAuMzg2MzIyCjEuMDAwMDAwIDAuOTQ5NzY4IDAuNTcyNzU0CjAuMDAxMzczIDAuMjI5MDY1IDAuNTA3MDUwCjAuMDM2MDExIDAuMjYxNDQ0IDAuNTUxMjM5CjAuMjIyMzUxIDAuNDYxMzk1IDAuMzAyMjc3CjAuNTYxNDMyIDAuNjg5MzkyIDAuMTMwODI5CjAuODc1NDg4IDAuODc1NDg4IDAuMDI4NjU2CjAuOTczNTQxIDAuOTE0NTIwIDAuMDkwNzU5CjEuMDAwMDAwIDAuOTM1MzMzIDAuMjEyMjE5CjEuMDAwMDAwIDAuOTY2NDAwIDAuMzYxMjk4CjAuMDAwMDAwIDAuMjYwMDQwIDAuNjU1OTE0CjAuMDE4MDY2IDAuMjk4NTg0IDAuNzE0NjAwCjAuMTY0MzM3IDAuNDkyNTU0IDAuNDc4MzMzCjAuNDIyOTc0IDAuNjc5MDc3IDAuMjQ0NTY4CjAuNzUwMTIyIDAuODQ5MzY1IDAuMDk2NzcxCjAuOTgwNTYwIDAuOTgwNTYwIDAuMDEyMzkwCjEuMDAwMDAwIDAuOTcwOTQ3IDAuMDg4MjU3CjEuMDAwMDAwIDAuOTgxODEyIDAuMTkzNjM0CjAuMDAwMDAwIDAuMzEwMzY0IDAuNzc3MDA4CjAuMDA0NTc4IDAuMzU2NDc2IDAuODUxODM3CjAuMTEwMjI5IDAuNTI5NTcyIDAuNjU1NTQ4CjAuMzA1MDU0IDAuNjc5NjU3IDAuMzk3MjQ3CjAuNjAxODY4IDAuODIyMDgzIDAuMTk5MDM2CjAuODU5MTYxIDAuOTQyOTAyIDAuMDY4OTcwCjEuMDAwMDAwIDEuMDAwMDAwIDAuMDE0Mzc0CjEuMDAwMDAwIDAuOTk1NjA1IDAuMDc2MDUwCjAuMDAwMDAwIDAuMzY2MzAyIDAuODgxNTYxCjAuMDAwMDAwIDAuMzk2NzkwIDAuOTQzMzI5CjAuMDY1ODg3IDAuNTQyNzU1IDAuODAzODY0CjAuMjE1MjEwIDAuNjcyOTc0IDAuNTkxMzA5CjAuNDMyODMxIDAuNzc3OTI0IDAuMzM2NTQ4CjAuNzA0NjIwIDAuODg2NTY2IDAuMTYxMjU1CjAuOTEzMDU1IDAuOTc1MzQyIDAuMDQ3MjQxCjEuMDAwMDAwIDEuMDAwMDAwIDAuMDA4NTQ1CjAuMDAxNjQ4IDAuMDA0ODIyIDAuMTk2MzUwCjAuMDEzMTIzIDAuMDcyMDIxIDAuMjQ0MjkzCjAuMDI4NjU2IDAuMTk0MjQ0IDAuMjk3MTUwCjAuMjI2MDEzIDAuMzY2Njk5IDAuNTcyNTEwCjAuNTAyNTYzIDAuNTcyNjYyIDAuNzU2NTMxCjAuNjMzNDg0IDAuNzUyNTYzIDAuODU2MjMyCjAuNjk0MjQ0IDAuOTAxODU1IDAuOTQzOTA5CjAuNzIwOTc4IDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAyODY5IDAuMDI4NjU2IDAuMTIxODI2CjAuMDI5MDIyIDAuMDQyOTA4IDAuMTQ3MzA4CjAuMDYwODgzIDAuMTI1NzMyIDAuMTg4MTEwCjAuMzI3OTExIDAuMjk4ODI4IDAuNDIzMDY1CjAuNjY0NTgxIDAuNDk3MTkyIDAuNjMzMzYyCjAuNzk5MjU1IDAuNjU2NTU1IDAuNzQ1MDg3CjAuODcwMjM5IDAuNzk1NTYzIDAuODQ2MjgzCjAuODc3NzQ3IDAuOTE0MjQ2IDAuOTM1MjQyCjAuMDA0MTgxIDAuMDY0MDI2IDAuMDY0MDI2CjAuMDMxNDMzIDAuMDgzMzEzIDAuMDgzMzEzCjAuMTAyOTM2IDAuMTAyOTM2IDAuMTAyOTM2CjAuNDQ0MDAwIDAuMjg4MDI1IDAuMjg4MDI1CjAuNzg5ODI1IDAuNDc1MDM3IDAuNDc1MDM3CjAuOTI2MzYxIDAuNjA0OTgwIDAuNjA0OTgwCjAuOTk2MjQ2IDAuNzIzNDUwIDAuNzIzNDUwCjEuMDAwMDAwIDAuODQ0ODQ5IDAuODQ0ODQ5CjAuMDA0MzY0IDAuMjA1MDc4IDAuMjQyODI4CjAuMDQyMDg0IDAuMjM1ODQwIDAuMjc2MDYyCjAuMTM4MTUzIDAuMjY1NDcyIDAuMzA4MDQ0CjAuNDU3MTg0IDAuNDczODc3IDAuMTMxOTI3CjAuODAwNjI5IDAuNjU4MTQyIDAuMjY4NzY4CjAuOTM0ODE0IDAuNzM5MTM2IDAuMzc4OTA2CjEuMDAwMDAwIDAuODE1ODg3IDAuNTE2MTEzCjEuMDAwMDAwIDAuODg2NTY2IDAuNjc1NTM3CjAuMDAxOTg0IDAuMzEzODczIDAuNDQwODI2CjAuMDM3NDQ1IDAuMzUxMjU3IDAuNDg0NjgwCjAuMTMwMTg4IDAuMzg3MTQ2IDAuNTI1NTQzCjAuNDMzOTYwIDAuNjA3NTQ0IDAuMjc5OTY4CjAuODExMjc5IDAuODExMjc5IDAuMTE5MjAyCjAuOTQzMTE1IDAuODU0Njc1IDAuMTk3MDIxCjEuMDAwMDAwIDAuODkxMjA1IDAuMzEyMjI1CjEuMDAwMDAwIDAuOTI1MzIzIDAuNDY3ODA0CjAuMDAwMDAwIDAuMzUzMDI3IDAuNTcwMzQzCjAuMDE5NjUzIDAuNDAyMzc0IDAuNjI4ODc2CjAuMDgyNzY0IDAuNDQyNTM1IDAuNjY2MjYwCjAuMzE0Nzg5IDAuNjM0Mjc3IDAuNDA4MjAzCjAuNjczODg5IDAuODA4Nzc3IDAuMjA1NTY2CjAuOTUxMTcyIDAuOTUxMTcyIDAuMDcyMTQ0CjEuMDAwMDAwIDAuOTUyNjM3IDAuMTU3Nzc2CjEuMDAwMDAwIDAuOTYwMzg4IDAuMjc0MzIzCjAuMDAwMDAwIDAuNDAzOTAwIDAuNjc2MTc4CjAuMDA2MTA0IDAuNDcwOTQ3IDAuNzU0MjQyCjAuMDQ1MTY2IDAuNTE1ODY5IDAuNzg4MzAwCjAuMjIxMDY5IDAuNjc1MDc5IDAuNTY1Nzk2CjAuNTExODQxIDAuODA2MjEzIDAuMzE0MDg3CjAuODE5Mjc1IDAuOTMwMzI4IDAuMTQ0Mzc5CjEuMDAwMDAwIDEuMDAwMDAwIDAuMDUzMzc1CjEuMDAwMDAwIDAuOTkwNzUzIDAuMTMwNzk4CjAuMDAwMDAwIDAuNDYwNDQ5IDAuNzcxMDI3CjAuMDAwMDAwIDAuNTEwNzQyIDAuODQ1MzY3CjAuMDE3MzM0IDAuNTQ0NDM0IDAuODkzMDk3CjAuMTQzNTI0IDAuNjc3MDk0IDAuNzA4NzcxCjAuMzU0Njc1IDAuNzc2OTE3IDAuNDUzMTg2CjAuNjU2NzM4IDAuODgxNjUzIDAuMjQxMjQxCjAuOTAwMzkxIDAuOTcxNjE5IDAuMDk2NTg4CjEuMDAwMDAwIDEuMDAwMDAwIDAuMDM3MzIzCjAuMDAwNDg4IDAuMDA1MTU3IDAuNTk5NzYyCjAuMDE5NTAxIDAuMDcyNzU0IDAuNjMwNjc2CjAuMDQ4NTIzIDAuMTk1NDM1IDAuNjYwNTgzCjAuMDg3NDMzIDAuMzczMTk5IDAuNjg5NTc1CjAuMjg0OTEyIDAuNTgwNjU4IDAuODQxMDY0CjAuNDAzODA5IDAuNzYwNzEyIDAuOTA4ODQ0CjAuNDczMjA2IDAuOTA5NDg1IDAuOTY5NTEzCjAuNTIyODI3IDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAxNjc4IDAuMDUyMDAyIDAuNDc1NTU1CjAuMDM2NjIxIDAuMDY4ODc4IDAuNTIwNTk5CjAuMDg2MTgyIDAuMTY1OTI0IDAuNTUyMDAyCjAuMTUzNjU2IDAuMzAxMzYxIDAuNTgyNDI4CjAuNDI1MjAxIDAuNDk1MDg3IDAuNzUwNzAyCjAuNTk0Mjk5IDAuNjU4Mjk1IDAuODI2NDc3CjAuNjg3OTU4IDAuODAwMTcxIDAuODk3MTg2CjAuNzAyNzg5IDAuOTIxNzUzIDAuOTYxNjA5CjAuMDAyODk5IDAuMTMxMDczIDAuMzU2OTAzCjAuMDM5MjE1IDAuMTU2MDk3IDAuMzk2NzI5CjAuMTMzMjcwIDAuMTgwNjM0IDAuNDM0NjMxCjAuMjM3MDAwIDAuMjkwNTI3IDAuNDYzNTMxCjAuNTkwMjEwIDAuNDg1NTA0IDAuNjU0NDgwCjAuNzY2OTY4IDAuNjE4MzE3IDAuNzM5MTY2CjAuODY1Mjk1IDAuNzM1MTk5IDAuODE2MDQwCjAuODgzMzMxIDAuODQxOTgwIDAuODg5MjgyCjAuMDA0MjExIDAuMjU0NjY5IDAuMjU0NjY5CjAuMDQxOTAxIDAuMjg4NjY2IDAuMjg4NjY2CjAuMTU2ODYwIDAuMzE5NTgwIDAuMzE5NTgwCjAuMzM3NTI0IDAuMzUxOTU5IDAuMzUxOTU5CjAuNzI1NjE2IDAuNTM0ODgyIDAuNTM0ODgyCjAuODk3Njc1IDAuNjI2NzQwIDAuNjI2NzQwCjAuOTkxNDg2IDAuNzEzOTU5IDAuNzEzOTU5CjEuMDAwMDAwIDAuODE0NTQ1IDAuODE0NTQ1CjAuMDAxOTg0IDAuNDA3NDEwIDAuNDQxMTMyCjAuMDM3NTY3IDAuNDQ5NzM4IDAuNDg0OTU1CjAuMTQ4OTU2IDAuNDg3NjcxIDAuNTIzNzczCjAuMzI2MDUwIDAuNTI2NDg5IDAuNTYxMzQwCjAuNzM3MzM1IDAuNzM3MzM1IDAuMzE1NzA0CjAuOTA2NzY5IDAuNzg1MjE3IDAuNDAwNjM1CjAuOTk3NDM3IDAuODMzMTMwIDAuNDk5MzI5CjEuMDAwMDAwIDAuODc5MDg5IDAuNjM4MDMxCjAuMDAwMDAwIDAuNDU3NDI4IDAuNTQwMjgzCjAuMDIwMjk0IDAuNTE2MjA1IDAuNTk4Njk0CjAuMDk5MTUyIDAuNTU2MDkxIDAuNjM1NDA2CjAuMjI3Mzg2IDAuNTk0MzYwIDAuNjcwNzQ2CjAuNTg2NzAwIDAuNzYyNDgyIDAuNDEyNjU5CjAuOTE1NjQ5IDAuOTE1NjQ5IDAuMjEyOTgyCjEuMDAwMDAwIDAuOTMwNDgxIDAuMjkzNTE4CjEuMDAwMDAwIDAuOTM2NzM3IDAuNDI2MTE3CjAuMDAwMDAwIDAuNTA4NDg0IDAuNjIxMzA3CjAuMDA2OTU4IDAuNTg3NTI0IDAuNzAwNjUzCjAuMDU4NzE2IDAuNjI2NjE3IDAuNzM1MjYwCjAuMTQ1ODQ0IDAuNjY0MDAxIDAuNzY4NDMzCjAuNDIyMDI4IDAuNzkxNTY1IDAuNTI3NTU3CjAuNzczNjIxIDAuOTE0Nzk1IDAuMjk1ODk4CjEuMDAwMDAwIDEuMDAwMDAwIDAuMTQ0Mzc5CjEuMDAwMDAwIDAuOTg1NTM1IDAuMjQyMzEwCjAuMDAwMDAwIDAuNTYwNzkxIDAuNjk2MDE0CjAuMDAwMDAwIDAuNjIyODY0IDAuNzc3ODYzCjAuMDI3NjQ5IDAuNjUzOTMxIDAuODI0NDMyCjAuMDgxNDIxIDAuNjczMDM1IDAuODU1MzQ3CjAuMjg5MDAxIDAuNzgwNjcwIDAuNjQ5OTAyCjAuNjAyNjMxIDAuODczOTkzIDAuMzk1NTY5CjAuODg0NTIxIDAuOTY1NjY4IDAuMjAzNDAwCjEuMDAwMDAwIDEuMDAwMDAwIDAuMTA4NTUxCjAuMDAwMDAwIDAuMDA2MDczIDAuOTAwOTcwCjAuMDE0MDM4IDAuMDY3MTY5IDAuOTE0ODg2CjAuMDQxMzIxIDAuMTg3ODY2IDAuOTE1MTYxCjAuMDc4OTE4IDAuMzY0NTMyIDAuOTE1NDY2CjAuMTI2OTIzIDAuNTg4NDA5IDAuOTE1NzEwCjAuMjEyNDYzIDAuNzY4NzA3IDAuOTU1ODExCjAuMjY1NzQ3IDAuOTE3MTQ1IDAuOTkxOTc0CjAuMzE3NzQ5IDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAwMDAwIDAuMDYyNTkyIDAuODIxNDExCjAuMDI5MDIyIDAuMDc2OTY1IDAuODYyMTgzCjAuMDc1OTU4IDAuMTc5MjYwIDAuODYxMDg0CjAuMTQxMzU3IDAuMzIwODMxIDAuODU5OTU1CjAuMjI1MjgxIDAuNTAxNDM0IDAuODU4ODU2CjAuMzYzMDM3IDAuNjY1NTU4IDAuOTAyOTU0CjAuNDYzNzc2IDAuODA3ODAwIDAuOTQ1NTg3CjAuNDgzNDU5IDAuOTI5MTM4IDAuOTg1MjI5CjAuMDAwMDAwIDAuMTYzMzMwIDAuNzMxMzU0CjAuMDMxNDAzIDAuMTkwMTI1IDAuNzcxMjQwCjAuMTE5NjI5IDAuMjE2OTgwIDAuODAxNDgzCjAuMjIwNDI4IDAuMzM3NDk0IDAuNzk4Nzk4CjAuMzUwMTg5IDAuNDgzMzY4IDAuNzk2MDUxCjAuNTQ5NDM4IDAuNjE2NDI1IDAuODQzMjMxCjAuNjc4MTAxIDAuNzM2ODE2IDAuODg5ODYyCjAuNzA1MDc4IDAuODQ2NjQ5IDAuOTM2NDkzCjAuMDAwMjE0IDAuMzEyMjI1IDAuNjI5MjExCjAuMDMzODc1IDAuMzQ5NzAxIDAuNjY4Mjc0CjAuMTQyMTIwIDAuMzgzNTE0IDAuNzAwNzE0CjAuMzE2MDQwIDAuNDE4NzYyIDAuNzMxOTM0CjAuNTAxMjUxIDAuNTM2OTU3IDAuNzI3MzU2CjAuNzI2NTAxIDAuNjM2MDc4IDAuNzgyMDQzCjAuODU3NTEzIDAuNzI1ODMwIDAuODMzMDk5CjAuODg1NDY4IDAuODA5ODc1IDAuODgzMDU3CjAuMDAxMzczIDAuNTA4MjQwIDAuNTA4MjQwCjAuMDM2Mzc3IDAuNTUyMjc3IDAuNTUyMjc3CjAuMTY2NDQzIDAuNTg2ODUzIDAuNTg2ODUzCjAuMzgwODI5IDAuNjIwMjcwIDAuNjIwMjcwCjAuNzE1NTE1IDAuNzE1NTE1IDAuNzE1NTE1CjAuODkxMTEzIDAuNzY2MTc0IDAuNzY2MTc0CjAuOTg3ODIzIDAuODE2ODMzIDAuODE2ODMzCjEuMDAwMDAwIDAuODc5MTIwIDAuODc5MTIwCjAuMDAwMDAwIDAuNTY0NTE0IDAuNTcxMDQ1CjAuMDE5ODY3IDAuNjIzMDE2IDAuNjI5NTE3CjAuMTE0Nzc3IDAuNjU3MTA0IDAuNjYzMjY5CjAuMjc1MzMwIDAuNjg5ODgwIDAuNjk1ODMxCjAuNTc0NTI0IDAuNzUyNDQxIDAuNzg1MTg3CjAuOTAwMjk5IDAuOTAwMjk5IDAuNTY0NTc1CjAuOTk0MTEwIDAuOTIwMTk3IDAuNjI3ODM4CjEuMDAwMDAwIDAuOTM2NzM3IDAuNzE4MjMxCjAuMDAwMDAwIDAuNjA5NjE5IDAuNjIxNjQzCjAuMDA3MDE5IDAuNjg4OTM0IDAuNzAwOTU4CjAuMDcyMDIxIDAuNzIyNDQzIDAuNzMzODU2CjAuMTg2NDAxIDAuNzU0NDU2IDAuNzY1NTY0CjAuNDE3MzI4IDAuNzg3NzgxIDAuODQ4OTY5CjAuNzU1OTgxIDAuOTAwNzU3IDAuNjM3NTEyCjAuOTk5ODE3IDAuOTk5ODE3IDAuNDAxNzk0CjEuMDAwMDAwIDAuOTg1NTY1IDAuNTE5NDcwCjAuMDAwMDAwIDAuNjUzNTAzIDAuNjY5NzM5CjAuMDAwMDAwIDAuNzIwMzY3IDAuNzU0MzAzCjAuMDM4MzAwIDAuNzQ4NTY2IDAuNzk4OTUwCjAuMTE0MTA1IDAuNzY0MjUyIDAuODI5NTU5CjAuMjgwMDYwIDAuNzcyMDAzIDAuOTA2ODMwCjAuNTkxMDAzIDAuODY1NzUzIDAuNzE1MzYzCjAuODcwOTQxIDAuOTU0NjgxIDAuNDgzNzM0CjEuMDAwMDAwIDEuMDAwMDAwIDAuMzE1MDAyCjAuMDAwMDAwIDAuMDA3NDc3IDAuOTgwMjU1CjAuMDAyNDcyIDAuMDYwNTQ3IDEuMDAwMDAwCjAuMDE0NDY1IDAuMTc2OTcxIDAuOTk5ODE3CjAuMDMxNzA4IDAuMzUxODM3IDAuOTk4MjYwCjAuMDUzNjE5IDAuNTc3MTQ4IDAuOTk2NjQzCjAuMDgwMTM5IDAuNzc2NjQyIDAuOTk0OTY1CjAuMTMwNzY4IDAuOTEyODQyIDEuMDAwMDAwCjAuMTYxNzQzIDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAwMDAwIDAuMDYyMTY0IDAuOTMwMzI4CjAuMDEyMzkwIDAuMDY4MDI0IDAuOTgwNTYwCjAuMDM5MDMyIDAuMTY3Mzg5IDAuOTc3NjAwCjAuMDc2MTExIDAuMzA3MTI5IDAuOTc0NTQ4CjAuMTIzNjI3IDAuNDg2OTA4IDAuOTcxNDM2CjAuMTgxNjEwIDAuNjcyNzYwIDAuOTY4MjkyCjAuMjU3MDgwIDAuODE1MzA4IDAuOTg2OTA4CjAuMjgzMjY0IDAuOTMxMzA1IDEuMDAwMDAwCjAuMDAwMDAwIDAuMTU1NzAxIDAuODcyMTAxCjAuMDEzODU1IDAuMTc1MjYyIDAuOTI3MTI0CjAuMDcyMTQ0IDAuMjAyNTE1IDAuOTUxMTcyCjAuMTM2NTA1IDAuMzIxNzc3IDAuOTQ2NTk0CjAuMjE5NTEzIDAuNDY3MTMzIDAuOTQxOTI1CjAuMzIxMDc1IDAuNjIyMTAxIDAuOTM3MTk1CjAuNDUwMzc4IDAuNzQzNDY5IDAuOTU3NDU4CjAuNDg0MjUzIDAuODUzNzYwIDAuOTc5NDkyCjAuMDAwMDAwIDAuMjg5NTIwIDAuODA3MDM3CjAuMDE1MzIwIDAuMzI4NDAwIDAuODY0Mjg4CjAuMDg5NDc4IDAuMzYyOTc2IDAuODkwNjI1CjAuMjEyOTgyIDAuMzk5Mzg0IDAuOTE1NjQ5CjAuMzQxMjE3IDAuNTE4NjQ2IDAuOTA5MzMyCjAuNDk4MTM4IDAuNjM0MjQ3IDAuOTAyODkzCjAuNjY0NjEyIDAuNzI0MTgyIDAuOTIzODg5CjAuNzAzOTc5IDAuODExMzQwIDAuOTQ4MzAzCjAuMDAwMDAwIDAuNDY1NDU0IDAuNzM1NDQzCjAuMDE2ODQ2IDAuNTI2MDMxIDAuNzkzNzMyCjAuMTA4NTIxIDAuNTYzNjI5IDAuODIxNTk0CjAuMjY1ODA4IDAuNTk5NjQwIDAuODQ4NDUwCjAuNTY0NTc1IDAuNzAwMzQ4IDAuOTAwMjk5CjAuNzEzMDEzIDAuNzY5Mzc5IDAuODkzNzM4CjAuODQ3NTk1IDAuODIyNzU0IDAuOTE2NDEyCjAuODc3NTYzIDAuODc1MDYxIDAuOTQwMzA4CjAuMDAwMDAwIDAuNjU3MTk2IDAuNjU3MTk2CjAuMDE4NDMzIDAuNzE1ODUxIDAuNzE1ODUxCjAuMTI5MTgxIDAuNzQ0OTA0IDAuNzQ0OTA0CjAuMzI0MTg4IDAuNzczMDQxIDAuNzczMDQxCjAuNjYyMTcwIDAuODI5NTU5IDAuODI5NTU5CjAuOTExMzc3IDAuOTExMzc3IDAuOTExMzc3CjAuOTg4MzQyIDAuOTMzMTY3IDAuOTMzMTY3CjEuMDAwMDAwIDAuOTYwMzU4IDAuOTYwMzU4CjAuMDAwMDAwIDAuNjk4MjczIDAuNjc2MjA4CjAuMDA2MDEyIDAuNzc1NjY1IDAuNzUzNzg0CjAuMDgzOTU0IDAuODA0MTk5IDAuNzgzMTQyCjAuMjI3NTcwIDAuODMxNjk2IDAuODExNDYyCjAuNTE0NTg3IDAuODYyNzkzIDAuODY3NTg0CjAuNzgwNjA5IDAuODk4NjIxIDAuOTQ0OTc3CjAuOTk0NTY4IDAuOTk0NTY4IDAuNzc1ODc5CjEuMDAwMDAwIDAuOTkwNjkyIDAuODIyODQ1CjAuMDAwMDAwIDAuNzM3NTc5IDAuNjk2NTk0CjAuMDAwMDAwIDAuODAxNjA1IDAuNzc2ODU1CjAuMDQ4NTUzIDAuODMwMDE3IDAuODIxNTAzCjAuMTQ5MjkyIDAuODQzMDQ4IDAuODUwMTg5CjAuMzYzNDY0IDAuODQ5OTc2IDAuOTAzMTk4CjAuNjIyMjUzIDAuODU1OTI3IDAuOTc1MTg5CjAuODYzOTUzIDAuOTQxNjIwIDAuODE0NTc1CjEuMDAwMDAwIDEuMDAwMDAwIDAuNjQ4MzE1CjAuMDAxMTkwIDAuMDEwNDM3IDEuMDAwMDAwCjAuMDA2Mzc4IDAuMDc3NTQ1IDEuMDAwMDAwCjAuMDEyNTczIDAuMTkyMzIyIDEuMDAwMDAwCjAuMDE5ODA2IDAuMzU0Njc1IDEuMDAwMDAwCjAuMDI4MDQ2IDAuNTYwMzY0IDEuMDAwMDAwCjAuMDQ0MDA2IDAuNzQ3NDA2IDEuMDAwMDAwCjAuMDQ3NjA3IDAuODk5MjAwIDEuMDAwMDAwCjAuMDU1ODQ3IDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAwMDAwIDAuMDYyNzQ0IDAuOTc2NDQwCjAuMDE0Mzc0IDAuMDgyNDI4IDEuMDAwMDAwCjAuMDMwMzY1IDAuMTgwMzg5IDEuMDAwMDAwCjAuMDUwNDQ2IDAuMzEzNzIxIDEuMDAwMDAwCjAuMDc0NjQ2IDAuNDgyNjY2IDEuMDAwMDAwCjAuMTEzMTU5IDAuNjU4NzIyIDEuMDAwMDAwCjAuMTM1MjIzIDAuODA3NDM0IDEuMDAwMDAwCjAuMTU0OTA3IDAuOTE4NDU3IDEuMDAwMDAwCjAuMDAwMDAwIDAuMTUyNTU3IDAuOTQzNzI2CjAuMDAyNTYzIDAuMTY1MjUzIDEuMDAwMDAwCjAuMDUzMzc1IDAuMjA5NDEyIDEuMDAwMDAwCjAuMDkxOTQ5IDAuMzI0MzQxIDEuMDAwMDAwCjAuMTM5NzQwIDAuNDY0NDQ3IDEuMDAwMDAwCjAuMjEwNTcxIDAuNjE0MzQ5IDEuMDAwMDAwCjAuMjYyOTM5IDAuNzQ3Mzc1IDEuMDAwMDAwCjAuMjk4OTIwIDAuODUxMzc5IDEuMDAwMDAwCjAuMDAwMDAwIDAuMjc4MzgxIDAuOTA3MDEzCjAuMDAyNjI1IDAuMzExNDkzIDAuOTcyMzIxCjAuMDQ5NjIyIDAuMzQ2ODkzIDAuOTkyMDM1CjAuMTQ0Mzc5IDAuMzkyNjM5IDEuMDAwMDAwCjAuMjIzNDgwIDAuNTA5MjQ3IDEuMDAwMDAwCjAuMzM2MzM0IDAuNjIzMzIyIDEuMDAwMDAwCjAuNDMzMTY3IDAuNzI5MTg3IDAuOTk5MDIzCjAuNDg3NTc5IDAuODE2OTI1IDEuMDAwMDAwCjAuMDAwMDAwIDAuNDQwNjQzIDAuODY3MDk2CjAuMDAzMzg3IDAuNTAzMjM1IDAuOTM2NjQ2CjAuMDYzNjYwIDAuNTQzNzYyIDAuOTU4OTIzCjAuMTczMzcwIDAuNTgyNTIwIDAuOTc5Mjc5CjAuNDAxNzk0IDAuNjg4NDc3IDAuOTk5ODE3CjAuNTU0ODEwIDAuNzU4OTExIDAuOTk2MDYzCjAuNjU3NDEwIDAuODI1NzE0IDAuOTkzMjI1CjAuNjk4ODUzIDAuODgwMzQxIDAuOTk2OTc5CjAuMDAwMDAwIDAuNjIyNTU5IDAuODI0MTU4CjAuMDA0MTUwIDAuNjk1NTI2IDAuODk2NjY3CjAuMDc5MjU0IDAuNzI2ODM3IDAuOTIwMTA1CjAuMjIwMDMyIDAuNzU3MzU1IDAuOTQyMzIyCjAuNTA0MDI4IDAuODE4MDI0IDAuOTY2ODg4CjAuNzkyNTExIDAuOTA0Mzg4IDAuOTk0MDE5CjAuODQ4Mzg5IDAuOTM3OTU4IDAuOTkxOTc0CjAuODcyODAzIDAuOTYyODMwIDAuOTk2MDk0CjAuMDAwMDAwIDAuNzc4MzgxIDAuNzc4MzgxCjAuMDA0OTEzIDAuODUzMDU4IDAuODUzMDU4CjAuMDk2MzEzIDAuODc3MTk3IDAuODc3MTk3CjAuMjcyMDAzIDAuOTAwMjk5IDAuOTAwMjk5CjAuNjA1NjIxIDAuOTI2NzU4IDAuOTI2NzU4CjAuODczOTAxIDAuOTU4ODMyIDAuOTU4ODMyCjAuOTkwNjkyIDAuOTkwNjkyIDAuOTkwNjkyCjEuMDAwMDAwIDAuOTk1NTQ0IDAuOTk1NTQ0CjAuMDAwMDAwIDAuODE0MDI2IDAuNzcyMDM0CjAuMDAwMDAwIDAuODcyMTMxIDAuODQ1MzA2CjAuMDU4MzUwIDAuOTAwMTE2IDAuODg4MDAwCjAuMTg2MzQwIDAuOTEwNjE0IDAuOTEyNTk4CjAuNDUzMjE3IDAuOTE2Nzc5IDAuOTM5NDg0CjAuNzM2Mzg5IDAuOTIzMTg3IDAuOTcxMjIyCjAuODY2MDg5IDAuOTM0NDE4IDEuMDAwMDAwCjEuMDAwMDAwIDEuMDAwMDAwIDAuODczNzQ5CjAuMDAwMDAwIDAuMDEwMzc2IDEuMDAwMDAwCjAuMDAwMDAwIDAuMDc2Mjk0IDEuMDAwMDAwCjAuMDAwMDAwIDAuMTg4Mzg1IDEuMDAwMDAwCjAuMDAwMDAwIDAuMzQ2NzEwIDEuMDAwMDAwCjAuMDAwMDAwIDAuNTQ4NTUzIDEuMDAwMDAwCjAuMDA2NzQ0IDAuNzM0NzQxIDEuMDAwMDAwCjAuMDA4NzI4IDAuODg2ODQxIDEuMDAwMDAwCjAuMDAwMDAwIDEuMDAwMDAwIDEuMDAwMDAwCjAuMDAwMDAwIDAuMDYzNjI5IDAuOTg3MjQ0CjAuMDA4NTQ1IDAuMDg0Nzc4IDEuMDAwMDAwCjAuMDE1MTA2IDAuMTgxMDYxIDEuMDAwMDAwCjAuMDIyNzM2IDAuMzEwODgzIDEuMDAwMDAwCjAuMDMxMzQyIDAuNDczOTA3IDEuMDAwMDAwCjAuMDU1MzU5IDAuNjQ1OTA1IDEuMDAwMDAwCjAuMDcxNjI1IDAuNzkxOTMxIDEuMDAwMDAwCjAuMDU1ODQ3IDAuOTEzMzYxIDEuMDAwMDAwCjAuMDAwMDAwIDAuMTUwNjY1IDAuOTcyNTk1CjAuMDAzMTEzIDAuMTczMDY1IDEuMDAwMDAwCjAuMDM3MzIzIDAuMjE0NjAwIDEuMDAwMDAwCjAuMDU4ODk5IDAuMzI3MjQwIDEuMDAwMDAwCjAuMDg0NTk1IDAuNDYyMzQxIDEuMDAwMDAwCjAuMTM2MzUzIDAuNjA3MzYxIDEuMDAwMDAwCjAuMTc5NDc0IDAuNzM0NTg5IDEuMDAwMDAwCjAuMTYxNzQzIDAuODQ0NzU3IDEuMDAwMDAwCjAuMDAwMDAwIDAuMjcxNDIzIDAuOTU2NTczCjAuMDAwMDAwIDAuMzA0Njg4IDAuOTk2MTI0CjAuMDM3NTY3IDAuMzQ4MTE0IDEuMDAwMDAwCjAuMTA4NTUxIDAuMzk5Njg5IDEuMDAwMDAwCjAuMTU5NzYwIDAuNTEzOTE2IDEuMDAwMDAwCjAuMjQ5NzU2IDAuNjI1NDU4IDEuMDAwMDAwCjAuMzMyMjQ1IDAuNzI1MjUwIDEuMDAwMDAwCjAuMzE3NzQ5IDAuODE0NjA2IDEuMDAwMDAwCjAuMDAwMDAwIDAuNDI1NjkwIDAuOTM5NTE0CjAuMDAwMDAwIDAuNDgxMjYyIDAuOTgyODQ5CjAuMDM3NzgxIDAuNTI5NDE5IDEuMDAwMDAwCjAuMTI1MDAwIDAuNTc0NDYzIDEuMDAwMDAwCjAuMzE1MDAyIDAuNjg3NjgzIDEuMDAwMDAwCjAuNDM1OTQ0IDAuNzU2OTI3IDEuMDAwMDAwCjAuNTQwMTAwIDAuODIwNzA5IDEuMDAwMDAwCjAuNTIyODI3IDAuODc5MTUwIDEuMDAwMDAwCjAuMDAwMDAwIDAuNjAxNjI0IDAuOTIxNTA5CjAuMDAwMDAwIDAuNjY2MDQ2IDAuOTY3OTI2CjAuMDQyNjMzIDAuNzE0MTExIDAuOTk0Mzg1CjAuMTQyNDg3IDAuNzQ2NjQzIDEuMDAwMDAwCjAuMzY5MjMyIDAuODA5MjY1IDEuMDAwMDAwCjAuNjg0MjA0IDAuODk3NTgzIDEuMDAwMDAwCjAuNzQ0MjAyIDAuOTMwMzI4IDEuMDAwMDAwCjAuNzIwOTc4IDAuOTYwMzU4IDEuMDAwMDAwCjAuMDAwMDAwIDAuNzU0NDg2IDAuOTAyNjQ5CjAuMDAwMDAwIDAuODIwODYyIDAuOTUxODEzCjAuMDU1MTQ1IDAuODY1NTQwIDAuOTc4NjY4CjAuMTgwODc4IDAuODkxMjY2IDAuOTg2NjMzCjAuNDQ2OTMwIDAuOTIwNzE1IDAuOTkyMDA0CjAuNzUxMDA3IDAuOTU1MjYxIDAuOTk2OTc5CjAuOTA2OTUyIDAuOTg1NzQ4IDEuMDAwMDAwCjAuODgxMzE3IDAuOTk1NTQ0IDEuMDAwMDAwCjAuMDAwMDAwIDAuODgyOTk2IDAuODgyOTk2CjAuMDAwMDAwIDAuOTM0NjMxIDAuOTM0NjMxCjAuMDY4OTM5IDAuOTYwOTk5IDAuOTYwOTk5CjAuMjI2OTkwIDAuOTY4NzgxIDAuOTY4NzgxCjAuNTQ5NDY5IDAuOTczODQ2IDAuOTczODQ2CjAuODM1NjMyIDAuOTc5NDMxIDAuOTc5NDMxCjAuOTY1MDg4IDAuOTg4NTI1IDAuOTg4NTI1CjEuMDAwMDAwIDEuMDAwMDAwIDEuMDAwMDAwCgAAAA==",
+          "type": "Uint8Array",
+          "path": "dia-2.CUBE"
+        },
+        "userData": {
+          "rootPath": "dia-2.CUBE"
+        },
+        "type": "LUTCubeTextureWrapper",
+        "name": ""
+      }
+    }
+  }
+}

@@ -81294,14 +81294,15 @@ var CustomMaterialConfiguratorPlugin = /*#__PURE__*/function (_MaterialConfigura
                       configuratorDiv.appendChild(container);
                       variation.materials.map(function (material) {
                         // material is the variation that can be applied to an object
-
                         var image;
+
                         // if (!variation.preview.startsWith('generate:')) {
                         //     const pp = material[variation.preview] || '#ff00ff'
                         //     image = pp.image || pp
                         // }
 
                         // callback to change the material variations
+
                         var onClick = function onClick() {
                           document.querySelectorAll('.configurator-button').forEach(function (el) {
                             el.classList.remove('active');
@@ -81397,61 +81398,66 @@ function setupViewer() {
 //     playMusic()
 // })
 function _setupViewer() {
-  _setupViewer = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-    var canvasView, canvasContainer, buttonExit, isMobile, CustomizerInterface, diamondColors, ringColors, bodyDocument, htmlDocument, firstLooad, viewer, manager, camera, position, target, camViews, needsUpdate, onUpdate, importer, loaderFix, diamondColorsContainer, ringColorsContainer, diamondColorsContainers, setupScrollAnimation;
-    return _regeneratorRuntime().wrap(function _callee4$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
+  _setupViewer = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
+    var canvasView, canvasContainer, buttonExit, isMobile, CustomizerInterface, diamondColors, ringColors, bodyDocument, htmlDocument, section3, sections, firstLooad, viewer, manager, camera, position, target, camViews, needsUpdate, onUpdate, importer, loaderFix, diamondColorsContainer, ringColorsContainer, diamondColorsContainers, setupScrollAnimation;
+    return _regeneratorRuntime().wrap(function _callee6$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
         case 0:
           onUpdate = function _onUpdate() {
             needsUpdate = true;
           };
           canvasView = document.getElementById('webgi-canvas');
           canvasContainer = document.getElementById('webgi-canvas-container');
-          buttonExit = document.querySelector('.button-exit');
+          buttonExit = document.querySelector('.btn-exit');
           isMobile = (0, _webgi.mobileAndTabletCheck)();
-          CustomizerInterface = document.querySelector('.footer-container'); // let nightModeButton = document.querySelector(".dark-mode")
-          // let musicButton = document.querySelector(".music-control")
+          CustomizerInterface = document.querySelector('.footer-container');
           diamondColors = document.querySelector(".footer-diamond-colors");
           ringColors = document.querySelector(".footer-ring-colors");
           bodyDocument = document.getElementById('body');
-          htmlDocument = document.getElementById('html'); // let nightMode = false
-          firstLooad = true; // Initialize the viewer
+          htmlDocument = document.getElementById('html');
+          section3 = document.querySelector(".section-3-container");
+          sections = document.querySelector('.container-hide');
+          firstLooad = true; // let nightModeButton = document.querySelector(".dark-mode")
+          // let musicButton = document.querySelector(".music-control")
+          // let nightMode = false
+          // Initialize the viewer
           viewer = new _webgi.ViewerApp({
             canvas: document.getElementById("webgi-canvas"),
             useRgbm: true
           }); // Add some plugins
-          _context5.next = 14;
+          _context7.next = 16;
           return viewer.addPlugin(_webgi.AssetManagerPlugin);
-        case 14:
-          manager = _context5.sent;
+        case 16:
+          manager = _context7.sent;
           camera = viewer.scene.activeCamera;
           position = camera.position;
           target = camera.target; // Add all the plugins at once
-          _context5.next = 20;
+          // await viewer.addPlugin(ScrollableCameraViewPlugin);
+          _context7.next = 22;
           return (0, _webgi.addBasePlugins)(viewer);
-        case 20:
-          _context5.next = 22;
-          return viewer.addPlugin(CustomMaterialConfiguratorPlugin);
         case 22:
-          _context5.next = 24;
-          return viewer.addPlugin(_webgi.NormalBufferPlugin, true);
+          _context7.next = 24;
+          return viewer.addPlugin(CustomMaterialConfiguratorPlugin);
         case 24:
+          _context7.next = 26;
+          return viewer.addPlugin(_webgi.NormalBufferPlugin, true);
+        case 26:
           viewer.confirm = function (NormalBufferPlugin) {
             return true;
           };
           window.confirm = function (NormalBufferPlugin) {
             return true;
           };
-          _context5.next = 28;
+          _context7.next = 30;
           return viewer.addPlugin(_webgi.SSBevelPlugin, true);
-        case 28:
+        case 30:
           camViews = viewer.getPlugin(_webgi.CameraViewPlugin); // This must be called after adding any plugin that changes the render pipeline.
           viewer.renderer.refreshPipeline();
 
           // Load a 3d model configured in the webgi editor using MaterialConfiguratorPlugin
-          _context5.next = 32;
+          _context7.next = 34;
           return manager.addFromPath("./assets/scroll-ring-pear.glb");
-        case 32:
+        case 34:
           viewer.getPlugin(_webgi.TonemapPlugin).contrast = 1.06;
 
           // viewer.getPlugin(TonemapPlugin)!.con ig!.clipBackground = true if we need clipped background
@@ -81486,9 +81492,9 @@ function _setupViewer() {
             }
           });
           viewer.renderer.refreshPipeline();
-          _context5.next = 43;
+          _context7.next = 45;
           return (0, _webgi.timeout)(350);
-        case 43:
+        case 45:
           diamondColorsContainer = document.querySelector(".footer-container-diamond-color");
           ringColorsContainer = document.querySelector(".footer-container-ring-colors");
           diamondColorsContainers = document.querySelector('.footer-container-ring-colors'); // ---------------- ------------------------ SETUP SCROLL ANIMATION ---------------- ------------------------ //
@@ -81504,6 +81510,10 @@ function _setupViewer() {
                 ease: 'none'
               }
             });
+            function overflowVisible() {
+              bodyDocument.style.overflowY = "visible";
+              htmlDocument.style.overflowY = "visible";
+            }
             _gsap.default.fromTo(position, {
               x: isMobile ? 9 : 3,
               y: isMobile ? -0.8 : -0.8,
@@ -81513,7 +81523,8 @@ function _setupViewer() {
               y: isMobile ? 5 : 2,
               z: isMobile ? 10 : 7.86,
               duration: 4,
-              onUpdate: onUpdate
+              onUpdate: onUpdate,
+              onComplete: overflowVisible
             }, '-=0.8');
             _gsap.default.fromTo(target, {
               x: isMobile ? -3 : 2,
@@ -81571,7 +81582,7 @@ function _setupViewer() {
               y: 2.45,
               z: 4.57,
               scrollTrigger: {
-                trigger: ".section-3-text-bg",
+                trigger: ".three",
                 scrub: true,
                 start: "top bottom",
                 end: "top top",
@@ -81583,17 +81594,18 @@ function _setupViewer() {
               y: 0.42,
               z: 1.48,
               scrollTrigger: {
-                trigger: ".section-3-text-bg",
+                trigger: ".three",
                 scrub: true,
                 start: "top bottom",
                 end: "top top",
                 immediateRender: false
               },
               onUpdate: onUpdate
-            })
+            });
 
             // ---------------------------------  EXIT SECTION 1 TEXT
-            .to('.section-1-container', {
+
+            tl.to('.section-1-container', {
               opacity: 0,
               xPercent: '100',
               ease: "power4.out",
@@ -81629,7 +81641,7 @@ function _setupViewer() {
               x: '-110%',
               ease: "power4.inOut",
               scrollTrigger: {
-                trigger: ".three",
+                trigger: ".section-3-container",
                 start: "top bottom",
                 end: 'top top',
                 scrub: 1,
@@ -81647,7 +81659,7 @@ function _setupViewer() {
               duration: 0.5,
               ease: "power4.inOut",
               scrollTrigger: {
-                trigger: ".three",
+                trigger: ".section-3-container",
                 start: "top bottom",
                 end: "top top",
                 scrub: 1,
@@ -81683,49 +81695,69 @@ function _setupViewer() {
 
             // ---------------------------------  ENTER CUSTOMIZE BUTTON
 
-            var sections = document.querySelector('.container-hide');
             document.querySelector('.btn-customize').addEventListener('click', function () {
-              bodyDocument.style.overflowY = "hidden";
-              htmlDocument.style.overflowY = "hidden";
-              canvasContainer.style.cursor = "grab";
-              canvasContainer.style.zIndex = "1";
-              document.body.style.cursor = "grab";
-              // nightModeButton.style.opacity = "0"
-              // musicButton.style.opacity = "0"
+              buttonExit.classList.remove('scale-out-center');
+              section3.classList.add('scale-out-center');
               EnablePointerEvents();
               EnableCustomizer();
+              setTimeout(function () {
+                bodyDocument.style.overflowY = "hidden";
+                htmlDocument.style.overflowY = "hidden";
+                canvasContainer.style.cursor = "grab";
+                canvasContainer.style.zIndex = "1";
+                document.body.style.cursor = "grab";
+                section3.style.display = "none";
+              }, 500);
+              setTimeout(function () {
+                buttonExit.style.display = "inline-flex";
+              }, 510);
+              setTimeout(function () {
+                section3.classList.remove('scale-out-center');
+                enableControllers();
+              }, 2000);
+
+              // nightModeButton.style.opacity = "0"
+              // musicButton.style.opacity = "0"
             });
+
             function EnablePointerEvents() {
               buttonExit.style.pointerEvents = "all";
+              // buttonExit.style.visibility = "visible"
               canvasView.style.pointerEvents = "all";
               canvasContainer.style.pointerEvents = "all";
-              // musicButton.style.pointerEvents = "none"
               diamondColors.style.pointerEvents = "all";
               ringColors.style.pointerEvents = "all";
+
+              // musicButton.style.pointerEvents = "none"
               // nightModeButton.style.pointerEvents = "none"
             }
-
             function EnableCustomizer() {
-              _gsap.default.to(position, {
-                x: -0.28,
-                y: 3.335,
-                z: 9.92,
-                onUpdate: onUpdate,
-                duration: 2,
-                ease: "power3.inOut"
-              });
-              _gsap.default.to(target, {
-                x: 0.05,
-                y: 0.11,
-                z: 0.84,
-                onUpdate: onUpdate,
-                duration: 2,
-                ease: "power3.inOut",
-                onComplete: enableControllers
-              });
+              return _EnableCustomizer.apply(this, arguments);
+            }
+            function _EnableCustomizer() {
+              _EnableCustomizer = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+                var enableCustomizer;
+                return _regeneratorRuntime().wrap(function _callee2$(_context3) {
+                  while (1) switch (_context3.prev = _context3.next) {
+                    case 0:
+                      enableCustomizer = camViews.getCurrentCameraView(viewer.scene.activeCamera);
+                      enableCustomizer.position.set(-0.28, 3.335, 9.52);
+                      if (isMobile === true) {
+                        enableCustomizer.position.set(-0.28, 3.335, 9.52);
+                      }
+                      enableCustomizer.target.set(0.05, 0.11, 0.84);
+                      _context3.next = 6;
+                      return camViews.animateToView(enableCustomizer, 2000, _webgi.EasingFunctions.easeInOut);
+                    case 6:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }, _callee2);
+              }));
+              return _EnableCustomizer.apply(this, arguments);
             }
             function enableControllers() {
-              buttonExit.classList.add("visible");
+              // buttonExit.classList.add("visible")
               CustomizerInterface.classList.remove("hidden");
               CustomizerInterface.classList.add("visible");
               viewer.scene.activeCamera.setCameraOptions({
@@ -81746,35 +81778,52 @@ function _setupViewer() {
               });
             }
 
-            // ----------------------------   CUSTOMIZE EXIT
+            // ----------------------------   CUSTOMIZE EXIT ----------------------
 
             buttonExit.addEventListener('click', function () {
-              buttonExit.classList.remove("visible");
-              CustomizerInterface.classList.remove("visible");
-              CustomizerInterface.classList.add("hidden");
-              diamondColorsContainer.classList.remove("visible");
-              diamondColorsContainers.classList.remove("visible");
-              // nightModeButton.style.opacity = "1"
-              // musicButton.style.opacity = "1"
-              disablePointerEvents();
-              buttonExitFunc();
+              isCameraSetToFalse();
+              setTimeout(function () {
+                exit();
+                viewer.scene.activeCamera.setCameraOptions({
+                  controlsEnabled: false
+                });
+              }, 100);
+              buttonExit.classList.add('scale-out-center');
               setTimeout(function () {
                 disableCustomizer();
-              }, 500);
+              }, 300);
+              setTimeout(function () {
+                buttonExitFunc();
+                disablePointerEvents();
+                buttonExit.style.display = "none";
+              }, 700);
+              setTimeout(function () {
+                section3.style.display = "flex";
+              }, 1300);
+
+              // nightModeButton.style.opacity = "1"
+              // musicButton.style.opacity = "1"
             });
+
+            function exit() {
+              CustomizerInterface.classList.remove("visible");
+              CustomizerInterface.classList.add("hidden");
+              // buttonExit.classList.remove("visible")
+              // buttonExit.style.visibility = "hidden"
+              diamondColorsContainer.classList.remove("visible");
+              diamondColorsContainers.classList.remove("visible");
+            }
             function disablePointerEvents() {
               diamondColors.style.pointerEvents = "none";
               ringColors.style.pointerEvents = "none";
               buttonExit.style.pointerEvents = "none";
               canvasContainer.style.pointerEvents = "none";
+
               // musicButton.style.pointerEvents = "all"
               // nightModeButton.style.pointerEvents = "all"
             }
 
             function buttonExitFunc() {
-              viewer.scene.activeCamera.setCameraOptions({
-                controlsEnabled: false
-              });
               bodyDocument.style.overflowY = "visible";
               htmlDocument.style.overflowY = "visible";
               sections.style.visibility = "visible";
@@ -81793,6 +81842,31 @@ function _setupViewer() {
               controls.autoRotate = false;
               controls.maxDistance = Infinity;
             }
+            function disableCustomizer() {
+              return _disableCustomizer.apply(this, arguments);
+            }
+            function _disableCustomizer() {
+              _disableCustomizer = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+                var disableCustomizer;
+                return _regeneratorRuntime().wrap(function _callee3$(_context4) {
+                  while (1) switch (_context4.prev = _context4.next) {
+                    case 0:
+                      disableCustomizer = camViews.getCurrentCameraView(viewer.scene.activeCamera);
+                      disableCustomizer.position.set(2.74, 2.45, 4.57);
+                      if (isMobile === true) {
+                        disableCustomizer.position.set(2.74, 2.45, 4.57);
+                      }
+                      disableCustomizer.target.set(0.13, 0.42, 1.48);
+                      _context4.next = 6;
+                      return camViews.animateToView(disableCustomizer, 2000, _webgi.EasingFunctions.easeInOut);
+                    case 6:
+                    case "end":
+                      return _context4.stop();
+                  }
+                }, _callee3);
+              }));
+              return _disableCustomizer.apply(this, arguments);
+            }
             function isAutoRotateFalse() {
               var options = viewer.scene.activeCamera.getCameraOptions();
               viewer.scene.activeCamera.setCameraOptions(options);
@@ -81802,25 +81876,6 @@ function _setupViewer() {
             function isAutoRotateTrue() {
               var controls = viewer.scene.activeCamera.controls;
               controls.autoRotate = true;
-            }
-            function disableCustomizer() {
-              _gsap.default.to(position, {
-                x: 2.74,
-                y: 2.45,
-                z: 4.57,
-                onUpdate: onUpdate,
-                duration: 1,
-                ease: "power3.inOut"
-              });
-              _gsap.default.to(target, {
-                x: 0.13,
-                y: 0.42,
-                z: 1.48,
-                onUpdate: onUpdate,
-                duration: 1,
-                ease: "power3.inOut",
-                onComplete: isCameraSetToFalse
-              });
             }
             viewer.addEventListener('preFrame', function () {
               if (needsUpdate) {
@@ -81875,10 +81930,10 @@ function _setupViewer() {
               return _movetoRing.apply(this, arguments);
             }
             function _movetoRing() {
-              _movetoRing = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+              _movetoRing = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
                 var moveRing;
-                return _regeneratorRuntime().wrap(function _callee2$(_context3) {
-                  while (1) switch (_context3.prev = _context3.next) {
+                return _regeneratorRuntime().wrap(function _callee4$(_context5) {
+                  while (1) switch (_context5.prev = _context5.next) {
                     case 0:
                       moveRing = camViews.getCurrentCameraView(viewer.scene.activeCamera);
                       moveRing.position.set(-2.25, -0.18, 4.56);
@@ -81886,24 +81941,24 @@ function _setupViewer() {
                         moveRing.position.set(-5, 0.38, 8);
                       }
                       moveRing.target.set(0.2, 0.28, -0.02);
-                      _context3.next = 6;
+                      _context5.next = 6;
                       return camViews.animateToView(moveRing, 2000, _webgi.EasingFunctions.easeInOut);
                     case 6:
                     case "end":
-                      return _context3.stop();
+                      return _context5.stop();
                   }
-                }, _callee2);
+                }, _callee4);
               }));
               return _movetoRing.apply(this, arguments);
             }
             function movetoDiamonds() {
               return _movetoDiamonds.apply(this, arguments);
-            } // close gems and ring
+            } // ---------------------------------- CLOSE RING AND GEMS 
             function _movetoDiamonds() {
-              _movetoDiamonds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+              _movetoDiamonds = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
                 var moveDiamonds;
-                return _regeneratorRuntime().wrap(function _callee3$(_context4) {
-                  while (1) switch (_context4.prev = _context4.next) {
+                return _regeneratorRuntime().wrap(function _callee5$(_context6) {
+                  while (1) switch (_context6.prev = _context6.next) {
                     case 0:
                       moveDiamonds = camViews.getCurrentCameraView(viewer.scene.activeCamera);
                       moveDiamonds.position.set(1.59, 0.65, 5.05);
@@ -81911,13 +81966,13 @@ function _setupViewer() {
                         moveDiamonds.position.set(1.8, 1.2, 8.4);
                       }
                       moveDiamonds.target.set(-0.1, 0.02, 0.4);
-                      _context4.next = 6;
+                      _context6.next = 6;
                       return camViews.animateToView(moveDiamonds, 2000, _webgi.EasingFunctions.easeInOut);
                     case 6:
                     case "end":
-                      return _context4.stop();
+                      return _context6.stop();
                   }
-                }, _callee3);
+                }, _callee5);
               }));
               return _movetoDiamonds.apply(this, arguments);
             }
@@ -81935,11 +81990,11 @@ function _setupViewer() {
             });
           };
           setupScrollAnimation();
-        case 48:
+        case 50:
         case "end":
-          return _context5.stop();
+          return _context7.stop();
       }
-    }, _callee4);
+    }, _callee6);
   }));
   return _setupViewer.apply(this, arguments);
 }
@@ -81969,7 +82024,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50363" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60442" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

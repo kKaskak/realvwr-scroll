@@ -18,6 +18,7 @@ import {
     GammaCorrectionPlugin,
     CameraViewPlugin,
     MaterialConfiguratorBasePlugin,
+    ScrollableCameraViewPlugin,
     addBasePlugins,
     ITexture, TweakpaneUiPlugin, AssetManagerBasicPopupPlugin, CanvasSnipperPlugin,
     // DepthOfFieldPlugin,
@@ -64,22 +65,22 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
             console.log(variation.title)
             const container = document.createElement('div')
             container.classList.add('variations')
-            container.classList.add(variation.title === 'Gem' ? 'footer-container-diamond-color' : 'footer-container-ring-colors')
+            container.classList.add( variation.title === 'Gem' ? 'footer-container-diamond-color' : 'footer-container-ring-colors')
             container.id = variation.title
             // container.textContent = variation.title;
             configuratorDiv.appendChild(container)
 
             variation.materials.map(material => {
                 // material is the variation that can be applied to an object
-
                 let image;
+
                 // if (!variation.preview.startsWith('generate:')) {
                 //     const pp = material[variation.preview] || '#ff00ff'
                 //     image = pp.image || pp
                 // }
 
-
                 // callback to change the material variations
+
                 const onClick = () => {
                     document.querySelectorAll('.configurator-button').forEach((el) => {
                         el.classList.remove('active')
@@ -122,32 +123,43 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
 async function setupViewer() {
     const canvasView = document.getElementById('webgi-canvas')
     const canvasContainer = document.getElementById('webgi-canvas-container')
-    const buttonExit = document.querySelector('.button-exit')
+    const buttonExit = document.querySelector('.btn-exit')
     const isMobile = mobileAndTabletCheck()
     const CustomizerInterface = document.querySelector('.footer-container')
-    // let nightModeButton = document.querySelector(".dark-mode")
-    // let musicButton = document.querySelector(".music-control")
     let diamondColors = document.querySelector(".footer-diamond-colors")
     let ringColors = document.querySelector(".footer-ring-colors")
     let bodyDocument = document.getElementById('body')
     let htmlDocument = document.getElementById('html')
-    // let nightMode = false
+    let section3 = document.querySelector(".section-3-container")
+    const sections = document.querySelector('.container-hide')
     let firstLooad = true
+    
+    // let nightModeButton = document.querySelector(".dark-mode")
+    // let musicButton = document.querySelector(".music-control")
+    // let nightMode = false
+
 
     // Initialize the viewer
+
+
     const viewer = new ViewerApp({
         canvas: document.getElementById("webgi-canvas"),
         useRgbm: true
     });
 
     // Add some plugins
+
     const manager = await viewer.addPlugin(AssetManagerPlugin);
+   
     const camera = viewer.scene.activeCamera
     const position = camera.position
     const target = camera.target
 
     // Add all the plugins at once
+    // await viewer.addPlugin(ScrollableCameraViewPlugin);
+
     await addBasePlugins(viewer);
+
 
 
     // await viewer.addPlugin(MaterialConfiguratorPlugin)
@@ -169,7 +181,9 @@ async function setupViewer() {
 
 
 
+
     const camViews = viewer.getPlugin(CameraViewPlugin)
+
 
     // This must be called after adding any plugin that changes the render pipeline.
 
@@ -184,6 +198,7 @@ async function setupViewer() {
     await manager.addFromPath("./assets/scroll-ring-pear.glb")
 
     viewer.getPlugin(TonemapPlugin).contrast = 1.06
+
 
 
 
@@ -240,7 +255,6 @@ async function setupViewer() {
 
     const setupScrollAnimation = () => {
         document.body.style.overflowY = "scroll"
-
         loaderFix.style.opacity = "0"
         loaderFix.style.visibility = "hidden"
 
@@ -249,6 +263,11 @@ async function setupViewer() {
 
 
         const tl = gsap.timeline({default: {ease: 'none'}})
+        
+        function overflowVisible () {
+        bodyDocument.style.overflowY = "visible"
+        htmlDocument.style.overflowY = "visible"
+        }
 
 
         gsap.fromTo(position,
@@ -263,6 +282,7 @@ async function setupViewer() {
                 z: isMobile ? 10 : 7.86,
                 duration: 4,
                 onUpdate,
+                onComplete: overflowVisible
             },
             '-=0.8'
         )
@@ -330,7 +350,7 @@ async function setupViewer() {
         tl.to(position, {
             x: 2.74, y: 2.45, z: 4.57,
             scrollTrigger: {
-                trigger: ".section-3-text-bg",
+                trigger: ".three",
                 scrub: true,
                 start: "top bottom",
                 end: "top top",
@@ -340,7 +360,7 @@ async function setupViewer() {
             .to(target, {
                 x: 0.13, y: 0.42, z: 1.48,
                 scrollTrigger: {
-                    trigger: ".section-3-text-bg",
+                    trigger: ".three",
                     scrub: true,
                     start: "top bottom",
                     end: "top top",
@@ -355,7 +375,7 @@ async function setupViewer() {
 
             // ---------------------------------  EXIT SECTION 1 TEXT
 
-            .to('.section-1-container', {
+            tl.to('.section-1-container', {
                 opacity: 0, xPercent: '100', ease: "power4.out",
                 scrollTrigger: {
                     trigger: ".section-2-container",
@@ -397,7 +417,7 @@ async function setupViewer() {
                 x: '-110%',
                 ease: "power4.inOut",
                 scrollTrigger: {
-                    trigger: ".three",
+                    trigger: ".section-3-container",
                     start: "top bottom",
                     end: 'top top',
                     scrub: 1,
@@ -419,7 +439,7 @@ async function setupViewer() {
                 duration: 0.5,
                 ease: "power4.inOut",
                 scrollTrigger: {
-                    trigger: ".three",
+                    trigger: ".section-3-container",
                     start: "top bottom",
                     end: "top top",
                     scrub: 1,
@@ -457,45 +477,60 @@ async function setupViewer() {
 
         // ---------------------------------  ENTER CUSTOMIZE BUTTON
 
-
-        const sections = document.querySelector('.container-hide')
         document.querySelector('.btn-customize').addEventListener('click', () => {
-            bodyDocument.style.overflowY = "hidden"
-            htmlDocument.style.overflowY = "hidden"
-            canvasContainer.style.cursor = "grab"
-            canvasContainer.style.zIndex = "1"
-            document.body.style.cursor = "grab"
-            // nightModeButton.style.opacity = "0"
-            // musicButton.style.opacity = "0"
+            buttonExit.classList.remove('scale-out-center');
+            section3.classList.add('scale-out-center');
+            
             EnablePointerEvents()
             EnableCustomizer()
+             setTimeout(() => {
+                bodyDocument.style.overflowY = "hidden"
+                htmlDocument.style.overflowY = "hidden"
+                canvasContainer.style.cursor = "grab"
+                canvasContainer.style.zIndex = "1"
+                document.body.style.cursor = "grab"
+                section3.style.display = "none"
+             }, 500);
+            setTimeout(() => {
+                buttonExit.style.display = "inline-flex"
+            }, 510);
+            setTimeout(() => {
+                section3.classList.remove('scale-out-center');
+                enableControllers()
+            }, 2000);
+
+            // nightModeButton.style.opacity = "0"
+            // musicButton.style.opacity = "0"
         })
 
         function EnablePointerEvents() {
             buttonExit.style.pointerEvents = "all"
+            // buttonExit.style.visibility = "visible"
             canvasView.style.pointerEvents = "all"
             canvasContainer.style.pointerEvents = "all"
-            // musicButton.style.pointerEvents = "none"
             diamondColors.style.pointerEvents = "all"
             ringColors.style.pointerEvents = "all"
+
+            // musicButton.style.pointerEvents = "none"
             // nightModeButton.style.pointerEvents = "none"
         }
 
-        function EnableCustomizer() {
-            gsap.to(position, {x: -0.28, y: 3.335, z: 9.92, onUpdate, duration: 2, ease: "power3.inOut"})
-            gsap.to(target, {
-                x: 0.05,
-                y: 0.11,
-                z: 0.84,
-                onUpdate,
-                duration: 2,
-                ease: "power3.inOut",
-                onComplete: enableControllers
-            })
+        async function EnableCustomizer () {
+            let enableCustomizer = camViews.getCurrentCameraView(viewer.scene.activeCamera)
+            enableCustomizer.position.set(-0.28,3.335,9.52)
+            if (isMobile === true) {
+                enableCustomizer.position.set(-0.28,3.335,9.52)
+            }
+            enableCustomizer.target.set(0.05, 0.11, 0.84)
+            await camViews.animateToView(enableCustomizer, 2000, EasingFunctions.easeInOut)
+            
+            
+            // gsap.to(position, {x: -0.28, y: 3.335, z: 9.92, onUpdate, duration: 2, ease: "power3.inOut"})
+            // gsap.to(target, {x: 0.05, y: 0.11, z: 0.84, onUpdate, duration: 2,ease: "power3.inOut", onComplete: enableControllers })
         }
 
         function enableControllers() {
-            buttonExit.classList.add("visible")
+            // buttonExit.classList.add("visible")
             CustomizerInterface.classList.remove("hidden")
             CustomizerInterface.classList.add("visible")
             viewer.scene.activeCamera.setCameraOptions({controlsEnabled: true})
@@ -514,41 +549,62 @@ async function setupViewer() {
         }
 
 
-        // ----------------------------   CUSTOMIZE EXIT
+        // ----------------------------   CUSTOMIZE EXIT ----------------------
 
 
         buttonExit.addEventListener('click', () => {
-            buttonExit.classList.remove("visible")
-            CustomizerInterface.classList.remove("visible")
-            CustomizerInterface.classList.add("hidden")
-            diamondColorsContainer.classList.remove("visible")
-            diamondColorsContainers.classList.remove("visible")
-            // nightModeButton.style.opacity = "1"
-            // musicButton.style.opacity = "1"
-            disablePointerEvents()
-            buttonExitFunc()
+            isCameraSetToFalse()
+            setTimeout(() => {
+                exit()
+                viewer.scene.activeCamera.setCameraOptions({controlsEnabled: false})
+            }, 100);
+            buttonExit.classList.add('scale-out-center')
             setTimeout(() => {
                 disableCustomizer()
-            }, 500);
+            }, 300);
+            setTimeout(() => {
+                buttonExitFunc()
+                disablePointerEvents()
+                buttonExit.style.display = "none"
+            }, 700);
+            setTimeout(() => {
+                section3.style.display = "flex"
+            }, 1300);
+
+            // nightModeButton.style.opacity = "1"
+            // musicButton.style.opacity = "1"
         })
+        function exit() {
+            CustomizerInterface.classList.remove("visible")
+            CustomizerInterface.classList.add("hidden")
+            // buttonExit.classList.remove("visible")
+            // buttonExit.style.visibility = "hidden"
+            diamondColorsContainer.classList.remove("visible")
+            diamondColorsContainers.classList.remove("visible")
+        }
 
         function disablePointerEvents() {
+
             diamondColors.style.pointerEvents = "none"
             ringColors.style.pointerEvents = "none"
             buttonExit.style.pointerEvents = "none"
             canvasContainer.style.pointerEvents = "none"
+
             // musicButton.style.pointerEvents = "all"
             // nightModeButton.style.pointerEvents = "all"
         }
 
         function buttonExitFunc() {
-            viewer.scene.activeCamera.setCameraOptions({controlsEnabled: false})
             bodyDocument.style.overflowY = "visible"
             htmlDocument.style.overflowY = "visible"
+
             sections.style.visibility = "visible"
+
             canvasView.style.pointerEvents = "all"
             canvasContainer.style.zIndex = "unset"
+
             document.body.style.cursor = "default"
+
             ringColorsContainer.style.opacity = "0"
             ringColorsContainer.style.visibility = "hidden"
             diamondColorsContainer.style.opacity = "0"
@@ -563,6 +619,19 @@ async function setupViewer() {
             controls.maxDistance = Infinity;
         }
 
+         async function disableCustomizer () {
+            let disableCustomizer = camViews.getCurrentCameraView(viewer.scene.activeCamera)
+            disableCustomizer.position.set(2.74, 2.45, 4.57)
+            if (isMobile === true) {
+                disableCustomizer.position.set(2.74, 2.45, 4.57)
+            }
+            disableCustomizer.target.set(0.13, 0.42, 1.48)
+            await camViews.animateToView(disableCustomizer, 2000, EasingFunctions.easeInOut)
+
+            // gsap.to(position, {x: 2.74, y: 2.45, z: 4.57, onUpdate, duration: 2, ease: "power3.inOut"})
+            // gsap.to(target, { x: 0.13, y: 0.42, z: 1.48, onUpdate, duration: 2, ease: "power3.inOut"})
+        }
+        
         function isAutoRotateFalse() {
             const options = viewer.scene.activeCamera.getCameraOptions();
             viewer.scene.activeCamera.setCameraOptions(options);
@@ -574,29 +643,15 @@ async function setupViewer() {
             const controls = viewer.scene.activeCamera.controls;
             controls.autoRotate = true;
         }
-
-        function disableCustomizer() {
-            gsap.to(position, {x: 2.74, y: 2.45, z: 4.57, onUpdate, duration: 1, ease: "power3.inOut"})
-            gsap.to(target, {
-                x: 0.13,
-                y: 0.42,
-                z: 1.48,
-                onUpdate,
-                duration: 1,
-                ease: "power3.inOut",
-                onComplete: isCameraSetToFalse
-            })
-        }
-
-
+        
         viewer.addEventListener('preFrame', () => {
             if (needsUpdate) {
                 camera.positionTargetUpdated(true)
                 needsUpdate = false
             }
         })
-
-
+        
+        
         // ---------------------- CUSTOMIZE THE RING COLORS / PROPERTIES
 
 
@@ -662,20 +717,8 @@ async function setupViewer() {
         }
         moveRing.target.set(0.2,0.28,-0.02)
         await camViews.animateToView(moveRing, 2000, EasingFunctions.easeInOut)
-        // gsap.to(position, {
-        //     x: isMobile ? -4 : -2.04,
-        //     y: isMobile ? 0.18 : -0.30,
-        //     z: isMobile ? 7: 4.6,
-        //     onUpdate,
-        //     duration: 1,
-        // })
-        // gsap.to(target, {
-        // x: isMobile ? 0.5: 0.2,
-        // y: isMobile ? 0.13: 0.15,
-        // z: isMobile ? 0.01: 0.4,
-        // onUpdate,
-        // duration: 1,
-        // })
+        // gsap.to(position, {x: isMobile ? -4 : -2.04, y: isMobile ? 0.18 : -0.30, z: isMobile ? 7: 4.6, onUpdate, duration: 1, })
+        // gsap.to(target, {x: isMobile ? 0.5: 0.2,y: isMobile ? 0.13: 0.15,z: isMobile ? 0.01: 0.4,onUpdate,duration: 1,})
     }
     async function movetoDiamonds () {
         let moveDiamonds = camViews.getCurrentCameraView(viewer.scene.activeCamera)
@@ -685,24 +728,12 @@ async function setupViewer() {
         }
         moveDiamonds.target.set(-0.1,0.02,0.4)
         await camViews.animateToView(moveDiamonds, 2000, EasingFunctions.easeInOut)
-        //     gsap.to(position, {
-        //         x: isMobile ? 2.5 : 1.59,
-        //         y: isMobile ? 0.8 : 0.57,
-        //         z: isMobile ? 7.4 : 5.2,
-        //         onUpdate,
-        //         duration: 1,
-        //     })
-        //     gsap.to(target, {
-        //         x: isMobile ? -0.08: 0.03,
-        //         y: isMobile ? 0.22: 0.01,
-        //         z: isMobile ? 0.8: 0.43,
-        //         onUpdate,
-        //         duration: 1,
-        //     })
+        //     gsap.to(position, { x: isMobile ? 2.5 : 1.59, y: isMobile ? 0.8 : 0.57, z: isMobile ? 7.4 : 5.2, onUpdate, duration: 1,})
+        //     gsap.to(target, {x: isMobile ? -0.08: 0.03, y: isMobile ? 0.22: 0.01, z: isMobile ? 0.8: 0.43, onUpdate, duration: 1,})
     }
     
 
-        // close gems and ring
+        // ---------------------------------- CLOSE RING AND GEMS 
 
 
         const closeButtonMetal = document.getElementById('Metal1')

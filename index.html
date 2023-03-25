@@ -11,19 +11,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<link rel="stylesheet" href="src/styles.css">
+	<link rel="stylesheet" href="src/animations.css">
 	<script>
 		function scrollToTop() {
 			$('html, body').animate({
 				scrollTop: $("#body").offset().top
 			}, 50)
 		}
-			let htmlbe = document.getElementById('html')
-			let bodybe = document.getElementById('body')
-			function overflowVisible () {
-			htmlbe.style.overflowY = "visible"
-			bodybe.style.overflowY = "visible"
-			}
-		setTimeout(() => {overflowVisible()}, 5000)
 	</script>
 </head>
 
@@ -39,6 +33,7 @@
 				<a href="https://realvwr.com"><img src="/assets/images/realvwr.webp" alt="realvwr logo"><br>www.realvwr.com</a>
 			</h1>
 			<ul class="header-menu">
+				<button id="ExitButton" class="btn-exit btn-exit-customize scale-up-center">EXIT</button>
 				<!-- <li class="music-control">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -54,7 +49,7 @@
 		</nav>
 	</section>
 	<div class="container-hide">
-		<section class="section one">
+		<section id="view1" class="section one">
 			<div class="section-1-container" style="transform: translate(0%, 0px); opacity: 1;">
 				<div class="section-1-content">
 					<h1>Unique<br>Jewelry</h1>
@@ -69,7 +64,7 @@
 			</div>
 		</section>
 
-		<section id="section-two" class="section two">
+		<section id="view2" class="section two">
 			<div class="section-2-container" style="transform: translate3d(0%, 0px, 0px); opacity: 1;">
 				<div class="section-2-text-bg" style="opacity: 0.1;">Forever</div>
 				<div class="section-2-content">
@@ -82,8 +77,8 @@
 			</div>
 		</section>
 
-		<section class="section three" style="pointer-events: all;">
-			<div class="section-3-container">
+		<section id="view3" class="section three" style="pointer-events: all;">
+			<div class="section-3-container scale-up-center">
 				<div class="section-3-text-bg" style="opacity: 0.0926;">Emotions</div>
 				<div class="section-3-content" style="transform: translate3d(0%, 9.5876%, 0px); opacity: 0.9262;">
 					<div class="section-3-text">
@@ -92,7 +87,7 @@
 					</div>
 					<div class="section-3-text-and-button">
 						<p>Colorful gemstones from aquamarine, amethyst, tourmaline to diamonds come together in white gold on this luxury ring.</p>
-						<button tabindex="-1" class="btn-customize">
+						<button onclick="AnimateExitbutton()" tabindex="-1" class="btn-customize">
 							Customize it
 							<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g clip-path="url(#clip0_254_236)">
@@ -133,9 +128,6 @@
 	</div>
 
 
-
-
-	<button class="btn-customize button-exit">EXIT</button>
 <!--	<div id="configurator"></div>-->
 	<div id="webgi-canvas-container">
 		<canvas id="webgi-canvas"></canvas>

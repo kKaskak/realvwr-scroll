@@ -12,10 +12,10 @@
     "@types/jquery": "^3.5.14",
     "@types/three": "^0.139.0",
     "@types/webgi": "https://storage.googleapis.com/dist.pixotronics.com/webgi/runtime/bundle-types-0.6.3.tgz",
+    "gsap": "^3.11.4",
     "parcel-bundler": "^1.6.1",
     "parcel-plugin-static-files-copy": "^2.6.0",
     "typescript": "4.4.4",
-    "gsap": "^3.11.4",
     "vercel": "^27.2.0",
     "webgi": "https://storage.googleapis.com/dist.pixotronics.com/webgi/runtime/bundle-0.6.3.tgz"
   },
@@ -33,5 +33,8 @@
         "staticOutDir": "assets"
       }
     ]
+  },
+  "dependencies": {
+    "animations.css": "^1.0.1"
   }
 }
