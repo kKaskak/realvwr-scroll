@@ -1,99 +1,259 @@
 <!DOCTYPE html>
 <html lang="en" id="html">
+  <head>
+    <title>Realvwr scroll</title>
+    <!-- Metas -->
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Explore 3D jewelry on our website. Immerse yourself in the stunning presentation of this exquisite ring model."
+    />
+    <meta
+      name="keywords"
+      content="realvwr, realvwr scroll, WEBGI, 3D website, jewelry"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="webiste" />
+    <meta property="og:title" content="Realvwr scroll" />
+    <meta
+      property="og:description"
+      content="Explore 3D jewelry on our website. Immerse yourself in the stunning presentation of this exquisite ring model."
+    />
+    <meta property="og:url" content="https://scroll.realvwr.com" />
+    <meta property="og:site_name" content="Realvwr Scroll" />
+    <meta
+      property="og:image"
+      content="https://i.postimg.cc/jqWX7J5m/Screenshot-2023-05-24-at-0-34-11.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:image:type" content="image/png" />
+    <meta name="twitter:card" content="summary_learge_image" />
+    <meta name="twitter:creator" content="@realvwr" />
+    <meta name="twitter:site" content="@realvwr" />
+    <meta
+      name="twitter:image"
+      content="https://i.postimg.cc/jqWX7J5m/Screenshot-2023-05-24-at-0-34-11.png"
+    />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Playfair+Display+SC&family=Qwitcher+Grypen&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Qwitcher+Grypen&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!-- Links -->
+    <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/animations.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://www.realvwr.com/wp-content/uploads/2021/08/cropped-favicon-realvwr-32x32.jpeg"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href="https://www.realvwr.com/wp-content/uploads/2021/08/cropped-favicon-realvwr-192x192.jpeg"
+      sizes="192x192"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://www.realvwr.com/wp-content/uploads/2021/08/cropped-favicon-realvwr-180x180.jpeg"
+    />
+    <script>
+      function scrollToTop() {
+        $("html, body").animate(
+          {
+            scrollTop: $("#body").offset().top,
+          },
+          50
+        );
+      }
+    </script>
+  </head>
 
-<head>
-	<title>Realvwr scroll</title>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<!-- FONTS -->
-	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Playfair+Display+SC&family=Qwitcher+Grypen&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Qwitcher+Grypen&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap" rel="stylesheet">
-	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<link rel="stylesheet" href="src/styles.css">
-	<link rel="stylesheet" href="src/animations.css">
-	<script>
-		function scrollToTop() {
-			$('html, body').animate({
-				scrollTop: $("#body").offset().top
-			}, 50)
-		}
-	</script>
-</head>
-
-<body id="body" onload="scrollToTop()">
-	<div class="loader">
-		<svg width="48" height="48" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="a" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="3" width="32" height="42"><path d="M25 44a15 15 0 1 0 0-30 15 15 0 0 0 0 30Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m18 8 3-4h8l3 4-7 6-7-6Z" fill="#555" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/></mask><g mask="url(#a)"><path d="M0 0h48v48H0V0Z" fill="#52322B"/></g></svg>
-		<p>Loading... Please wait</p>
-		<div class="progress"></div>
-	</div>
-	<section class="header">
-		<nav class="navbar-nav">
-			<h1 class="header-brand">
-				<a href="https://realvwr.com"><img src="/assets/images/realvwr.webp" alt="realvwr logo"><br>www.realvwr.com</a>
-			</h1>
-			<ul class="header-menu">
-				<button id="ExitButton" class="btn-exit btn-exit-customize scale-up-center">EXIT</button>
-				<!-- <li class="music-control">
+  <body id="body" onload="scrollToTop()">
+    <div class="loader">
+      <svg
+        width="48"
+        height="48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <mask
+          id="a"
+          style="mask-type: alpha"
+          maskUnits="userSpaceOnUse"
+          x="9"
+          y="3"
+          width="32"
+          height="42"
+        >
+          <path
+            d="M25 44a15 15 0 1 0 0-30 15 15 0 0 0 0 30Z"
+            stroke="#fff"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="m18 8 3-4h8l3 4-7 6-7-6Z"
+            fill="#555"
+            stroke="#fff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </mask>
+        <g mask="url(#a)"><path d="M0 0h48v48H0V0Z" fill="#52322B" /></g>
+      </svg>
+      <p>Loading... Please wait</p>
+      <div class="progress"></div>
+    </div>
+    <section class="header">
+      <nav class="navbar-nav">
+        <h1 class="header-brand">
+          <a href="https://realvwr.com"
+            ><img
+              src="/assets/images/realvwr.webp"
+              alt="realvwr logo"
+            /><br />www.realvwr.com</a
+          >
+        </h1>
+        <ul class="header-menu">
+          <button
+            id="ExitButton"
+            class="btn-exit btn-exit-customize scale-up-center"
+          >
+            EXIT
+          </button>
+          <!-- <li class="music-control">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M11 5L6 9H2V15H6L11 19V5Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path>
 						<path d="M19.07 4.92999C20.9447 6.80527 21.9979 9.34835 21.9979 12C21.9979 14.6516 20.9447 17.1947 19.07 19.07M15.54 8.45999C16.4774 9.39763 17.004 10.6692 17.004 11.995C17.004 13.3208 16.4774 14.5924 15.54 15.53" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path>
 					</svg>
 				</li> -->
-				<!-- <li class="dark-mode">
+          <!-- <li class="dark-mode">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="non" xmlns="http://www.w3.org/2000/svg">
 						<path d="M20.9999 12.79C20.8426 14.4922 20.2038 16.1144 19.1581 17.4668C18.1125 18.8192 16.7034 19.8458 15.0956 20.4265C13.4878 21.0073 11.7479 21.1181 10.0794 20.7461C8.41092 20.3741 6.8829 19.5345 5.67413 18.3258C4.46536 17.117 3.62584 15.589 3.25381 13.9205C2.88178 12.252 2.99262 10.5121 3.57336 8.9043C4.15411 7.29651 5.18073 5.88737 6.53311 4.84175C7.8855 3.79614 9.5077 3.15731 11.2099 3C10.2133 4.34827 9.73375 6.00945 9.85843 7.68141C9.98312 9.35338 10.7038 10.9251 11.8893 12.1106C13.0748 13.2961 14.6465 14.0168 16.3185 14.1415C17.9905 14.2662 19.6516 13.7866 20.9999 12.79V12.79Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path>
 					</svg>
 				</li> -->
-			</ul>
-		</nav>
-	</section>
-	<div class="container-hide">
-		<section id="view1" class="section one">
-			<div class="section-1-container" style="transform: translate(0%, 0px); opacity: 1;">
-				<div class="section-1-content">
-					<h1>Unique<br>Jewelry</h1>
-					<div class="section-1-text">
-						<p>Customize your unique ring with graphic angles and pure lines that combine to create the pure beauty of the collection.</p>
-						<button tabindex="-1" class="button button-scroll">
-							<a href="#">Start now</a>
-							<svg width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 42.2a19.2 19.2 0 1 0 0-38.4 19.2 19.2 0 0 0 0 38.4Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path><path d="m15.3 23 7.7 7.7 7.7-7.7M23 15.3v15.4" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-						</button>
-					</div>
-				</div>
-			</div>
-		</section>
+        </ul>
+      </nav>
+    </section>
+    <div class="container-hide">
+      <section id="view1" class="section one">
+        <div
+          class="section-1-container"
+          style="transform: translate(0%, 0px); opacity: 1"
+        >
+          <div class="section-1-content">
+            <h1>Unique<br />Jewelry</h1>
+            <div class="section-1-text">
+              <p>
+                Customize your unique ring with graphic angles and pure lines
+                that combine to create the pure beauty of the collection.
+              </p>
+              <button tabindex="-1" class="button button-scroll">
+                <a href="#">Start now</a>
+                <svg
+                  width="46"
+                  height="46"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M23 42.2a19.2 19.2 0 1 0 0-38.4 19.2 19.2 0 0 0 0 38.4Z"
+                    stroke="#52322B"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="m15.3 23 7.7 7.7 7.7-7.7M23 15.3v15.4"
+                    stroke="#52322B"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-		<section id="view2" class="section two">
-			<div class="section-2-container" style="transform: translate3d(0%, 0px, 0px); opacity: 1;">
-				<div class="section-2-text-bg" style="opacity: 0.1;">Forever</div>
-				<div class="section-2-content">
-					<div class="section-2-title">
-						<h2>created to last</h2>
-						<h1>For<br>ever</h1>
-					</div>
-					<p>Customize your unique ring with graphic angles and pure lines that combine to create the pure beauty of the collection.</p>
-				</div>
-			</div>
-		</section>
+      <section id="view2" class="section two">
+        <div
+          class="section-2-container"
+          style="transform: translate3d(0%, 0px, 0px); opacity: 1"
+        >
+          <div class="section-2-text-bg" style="opacity: 0.1">Forever</div>
+          <div class="section-2-content">
+            <div class="section-2-title">
+              <h2>created to last</h2>
+              <h1>For<br />ever</h1>
+            </div>
+            <p>
+              Customize your unique ring with graphic angles and pure lines that
+              combine to create the pure beauty of the collection.
+            </p>
+          </div>
+        </div>
+      </section>
 
-		<section id="view3" class="section three" style="pointer-events: all;">
-			<div class="section-3-container scale-up-center">
-				<div class="section-3-text-bg" style="opacity: 0.0926;">Emotions</div>
-				<div class="section-3-content" style="transform: translate3d(0%, 9.5876%, 0px); opacity: 0.9262;">
-					<div class="section-3-text">
-						<h2>share your</h2>
-						<h1 class="">Emotions</h1>
-					</div>
-					<div class="section-3-text-and-button">
-						<p>Colorful gemstones from aquamarine, amethyst, tourmaline to diamonds come together in white gold on this luxury ring.</p>
-						<button onclick="AnimateExitbutton()" tabindex="-1" class="btn-customize">
-							Customize it
-							<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g clip-path="url(#clip0_254_236)">
-									<path d="M12 15.1511C13.6569 15.1511 15 13.808 15 12.1511C15 10.4943 13.6569 9.15112 12 9.15112C10.3431 9.15112 9 10.4943 9 12.1511C9 13.808 10.3431 15.1511 12 15.1511Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round"></path>
-									<path
-										d="M19.4 15.1511C19.2669 15.4527 19.2272 15.7873 19.286 16.1117C19.3448 16.4361 19.4995 16.7354 19.73 16.9711L19.79 17.0311C19.976 17.2169 20.1235 17.4374 20.2241 17.6802C20.3248 17.923 20.3766 18.1833 20.3766 18.4461C20.3766 18.709 20.3248 18.9692 20.2241
+      <section id="view3" class="section three" style="pointer-events: all">
+        <div class="section-3-container scale-up-center">
+          <div class="section-3-text-bg" style="opacity: 0.0926">Emotions</div>
+          <div
+            class="section-3-content"
+            style="transform: translate3d(0%, 9.5876%, 0px); opacity: 0.9262"
+          >
+            <div class="section-3-text">
+              <h2>share your</h2>
+              <h1 class="">Emotions</h1>
+            </div>
+            <div class="section-3-text-and-button">
+              <p>
+                Colorful gemstones from aquamarine, amethyst, tourmaline to
+                diamonds come together in white gold on this luxury ring.
+              </p>
+              <button
+                onclick="AnimateExitbutton()"
+                tabindex="-1"
+                class="btn-customize"
+              >
+                Customize it
+                <svg
+                  width="24"
+                  height="25"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_254_236)">
+                    <path
+                      d="M12 15.1511C13.6569 15.1511 15 13.808 15 12.1511C15 10.4943 13.6569 9.15112 12 9.15112C10.3431 9.15112 9 10.4943 9 12.1511C9 13.808 10.3431 15.1511 12 15.1511Z"
+                      stroke="#52322B"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M19.4 15.1511C19.2669 15.4527 19.2272 15.7873 19.286 16.1117C19.3448 16.4361 19.4995 16.7354 19.73 16.9711L19.79 17.0311C19.976 17.2169 20.1235 17.4374 20.2241 17.6802C20.3248 17.923 20.3766 18.1833 20.3766 18.4461C20.3766 18.709 20.3248 18.9692 20.2241
 										19.212C20.1235 19.4548 19.976 19.6754 19.79 19.8611C19.6043 20.0471 19.3837 20.1946 19.1409 20.2952C18.8981 20.3959 18.6378 20.4477 18.375 20.4477C18.1122 20.4477 17.8519 20.3959 17.6091 20.2952C17.3663 20.1946 17.1457 20.0471 16.96 19.8611L16.9 19.8011C16.6643
 										19.5706 16.365 19.4159 16.0406 19.3571C15.7162 19.2983 15.3816 19.338 15.08 19.4711C14.7842 19.5979 14.532 19.8084 14.3543 20.0767C14.1766 20.3449 14.0813 20.6593 14.08 20.9811V21.1511C14.08 21.6816 13.8693 22.1903 13.4942 22.5653C13.1191 22.9404 12.6104 23.1511 12.08 23.1511C11.5496
 										23.1511 11.0409 22.9404 10.6658 22.5653C10.2907 22.1903 10.08 21.6816 10.08 21.1511V21.0611C10.0723 20.7301 9.96512 20.4091 9.77251 20.1398C9.5799 19.8705 9.31074 19.6654 9 19.5511C8.69838 19.418 8.36381 19.3783 8.03941 19.4371C7.71502 19.4959 7.41568 19.6506 7.18 19.8811L7.12 19.9411C6.93425
@@ -105,36 +265,121 @@
 										12 1.15112C12.5304 1.15112 13.0391 1.36184 13.4142 1.73691C13.7893 2.11198 14 2.62069 14 3.15112V3.24112C14.0013 3.56291 14.0966 3.8773 14.2743 4.14559C14.452 4.41388 14.7042 4.62436 15 4.75112C15.3016 4.88424 15.6362 4.92395 15.9606 4.86513C16.285 4.80631 16.5843 4.65166 16.82 4.42112L16.88 4.36112C17.0657 4.17517 17.2863 4.02765 17.5291 3.927C17.7719 3.82636
 										18.0322 3.77455 18.295 3.77455C18.5578 3.77455 18.8181 3.82636 19.0609 3.927C19.3037 4.02765 19.5243 4.17517 19.71 4.36112C19.896 4.54687 20.0435 4.76745 20.1441 5.01024C20.2448 5.25304 20.2966 5.51329 20.2966 5.77612C20.2966 6.03895 20.2448 6.29921 20.1441 6.542C20.0435 6.7848 19.896 7.00538 19.71 7.19112L19.65
 										7.25112C19.4195 7.4868 19.2648 7.78614 19.206 8.11053C19.1472 8.43493 19.1869 8.76951 19.32 9.07112V9.15112C19.4468 9.44689 19.6572 9.69914 19.9255 9.87682C20.1938 10.0545 20.5082 10.1498 20.83 10.1511H21C21.5304 10.1511 22.0391 10.3618 22.4142 10.7369C22.7893 11.112 23 11.6207 23 12.1511C23 12.6816 22.7893 13.1903 22.4142
-										13.5653C22.0391 13.9404 21.5304 14.1511 21 14.1511H20.91C20.5882 14.1524 20.2738 14.2478 20.0055 14.4254C19.7372 14.6031 19.5268 14.8554 19.4 15.1511V15.1511Z" stroke="#52322B" stroke-linecap="round" stroke-linejoin="round">
-									</path>
-								</g>
-								<defs>
-									<clipPath id="clip0_254_236">
-										<rect width="24" height="24" fill="white" transform="translate(0 0.151123)"></rect>
-									</clipPath>
-								</defs>
-							</svg>
-						</button>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-	<div class="footer-container hidden">
-		<li id="nav-tabs-inner" class="footer-diamond-colors"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><g transform="translate(-1143 -1225)"><g transform="translate(1143.808 1227.616)"><path d="M15.6,3,21,13.795l-9,21.59" transform="translate(7.192 0)" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="M12.4,3,7,13.795l9,21.59" transform="translate(3.197 0)" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="M28.188,3H10.2L3,13.795l16.192,21.59,16.192-21.59Z" transform="translate(0 0)" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="M3,9H35.384" transform="translate(0 4.795)" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/></g><path d="M24,44A20,20,0,1,0,4,24,20,20,0,0,0,24,44Z" transform="translate(1139 1221)" fill="none"/></g></svg></li>
-		<li id="nav-tabs-inner" class="footer-ring-colors"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 48 48"><rect width="48" height="48" fill="rgba(255,255,255,0.01)"/><path d="M24,44A20,20,0,1,0,4,24,20,20,0,0,0,24,44Z" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"/><path d="M24,36h0A12,12,0,0,0,36,24" transform="translate(48 48) rotate(180)" fill="none" stroke="#5a3540" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"/></svg></li>
+										13.5653C22.0391 13.9404 21.5304 14.1511 21 14.1511H20.91C20.5882 14.1524 20.2738 14.2478 20.0055 14.4254C19.7372 14.6031 19.5268 14.8554 19.4 15.1511V15.1511Z"
+                      stroke="#52322B"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_254_236">
+                      <rect
+                        width="24"
+                        height="24"
+                        fill="white"
+                        transform="translate(0 0.151123)"
+                      ></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="footer-container hidden">
+      <li id="nav-tabs-inner" class="footer-diamond-colors">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+        >
+          <g transform="translate(-1143 -1225)">
+            <g transform="translate(1143.808 1227.616)">
+              <path
+                d="M15.6,3,21,13.795l-9,21.59"
+                transform="translate(7.192 0)"
+                fill="none"
+                stroke="#5a3540"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+              />
+              <path
+                d="M12.4,3,7,13.795l9,21.59"
+                transform="translate(3.197 0)"
+                fill="none"
+                stroke="#5a3540"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+              />
+              <path
+                d="M28.188,3H10.2L3,13.795l16.192,21.59,16.192-21.59Z"
+                transform="translate(0 0)"
+                fill="none"
+                stroke="#5a3540"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+              />
+              <path
+                d="M3,9H35.384"
+                transform="translate(0 4.795)"
+                fill="none"
+                stroke="#5a3540"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+              />
+            </g>
+            <path
+              d="M24,44A20,20,0,1,0,4,24,20,20,0,0,0,24,44Z"
+              transform="translate(1139 1221)"
+              fill="none"
+            />
+          </g>
+        </svg>
+      </li>
+      <li id="nav-tabs-inner" class="footer-ring-colors">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 48 48"
+        >
+          <rect width="48" height="48" fill="rgba(255,255,255,0.01)" />
+          <path
+            d="M24,44A20,20,0,1,0,4,24,20,20,0,0,0,24,44Z"
+            fill="none"
+            stroke="#5a3540"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3.5"
+          />
+          <path
+            d="M24,36h0A12,12,0,0,0,36,24"
+            transform="translate(48 48) rotate(180)"
+            fill="none"
+            stroke="#5a3540"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3.5"
+          />
+        </svg>
+      </li>
 
-		<div id="configurator"></div>
-	</div>
+      <div id="configurator"></div>
+    </div>
 
+    <!--	<div id="configurator"></div>-->
+    <div id="webgi-canvas-container">
+      <canvas id="webgi-canvas"></canvas>
+    </div>
 
-<!--	<div id="configurator"></div>-->
-	<div id="webgi-canvas-container">
-		<canvas id="webgi-canvas"></canvas>
-	</div>
-
-	<!-- <script src="src/index.ts"></script> -->
-	<script src="src/scripts.js"></script>
-</body>
-
+    <!-- <script src="src/index.ts"></script> -->
+    <script src="src/scripts.js"></script>
+  </body>
 </html>
