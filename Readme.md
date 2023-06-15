@@ -1,3 +1,5 @@
+# A 3D scrollable website made with WEBGi
+
 # WebGi starter project
 A template for a vanilla(no ui-framework) project with webgi engine in typescript using parcel bundler.
 
