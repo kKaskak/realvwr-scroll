@@ -1,4 +1,4 @@
-# A 3D scrollable website made with WEBGi
+# A 3D scrollable website made with WEBGi and GSAP
 
 # WebGi starter project
 A template for a vanilla(no ui-framework) project with webgi engine in typescript using parcel bundler.
