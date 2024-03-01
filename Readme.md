@@ -1,9 +1,7 @@
 # A 3D scrollable website made with WEBGi and GSAP
 
-# WebGi starter project
+*Design by Anderson Mancini*
 
-Design by Anderson Mancini
-A template for a vanilla(no ui-framework) project with webgi engine in typescript using parcel bundler.
 
 About webgi: [https://webgi.xyz/](https://webgi.xyz/)
 
