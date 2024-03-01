@@ -32,7 +32,6 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
 
 		for (const variation of this.variations) {
 			buttonId = buttonId + 1;
-			console.log(variation.title);
 			const container = document.createElement('div');
 			container.classList.add('variations');
 			container.classList.add(
@@ -58,15 +57,6 @@ class CustomMaterialConfiguratorPlugin extends MaterialConfiguratorBasePlugin {
 						.classList.add('active');
 					this.applyVariation(variation, material.uuid);
 				};
-
-				// Generate a UI from this data.
-				console.log({
-					uid: material.uuid,
-					color: material.color,
-					material: material,
-					image,
-					onClick,
-				});
 				
 				// variations
 				const button = document.createElement('li');
