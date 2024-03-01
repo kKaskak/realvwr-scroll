@@ -1,10 +1,10 @@
-# A 3D scrollable website made with WEBGi and GSAP
+## A 3D scrollable website made with WEBGi and GSAP
 
 *Design by Anderson Mancini*
 
+<img width="1666" alt="Screenshot 2024-03-01 at 22 58 27" src="https://github.com/kKaskak/realvwr-scroll/assets/117831817/de87f8f2-1187-481f-8ada-d9b6c2d4a5bc">
 
-About webgi: [https://webgi.xyz/](https://webgi.xyz/)
-
+## About webgi: [https://webgi.xyz/](https://webgi.xyz/)
 ## Running
 
 First install the dependencies:
