@@ -5,6 +5,8 @@
 <img width="1666" alt="Screenshot 2024-03-01 at 22 58 27" src="https://github.com/kKaskak/realvwr-scroll/assets/117831817/de87f8f2-1187-481f-8ada-d9b6c2d4a5bc">
 
 ## About webgi: [https://webgi.xyz/](https://webgi.xyz/)
+Showcase Products in Full 3D with Incredible Details on websites and apps
+
 ## Running
 
 First install the dependencies:
